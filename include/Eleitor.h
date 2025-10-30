@@ -1,7 +1,7 @@
 #ifndef ELEITOR_H
 #define ELEITOR_H
 
-#include "pessoa.h" // Inclui a classe base
+#include "Pessoa.h" // Inclui a classe base
 
 // Representa um eleitor, herdando de Pessoa
 // Armazena dados de votação (título, seção, zona)

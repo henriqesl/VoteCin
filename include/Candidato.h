@@ -1,7 +1,7 @@
 #ifndef CANDIDATO_H
 #define CANDIDATO_H
 
-#include "pessoa.h" // Inclui a classe base
+#include "Pessoa.h" // Inclui a classe base
 
 // Representa um candidato, herdando de Pessoa
 // Armazena dados de candidatura (número, partido)

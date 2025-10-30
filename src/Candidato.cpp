@@ -1,4 +1,4 @@
-#include "candidato.h"
+#include "Candidato.h"
 
 // Implementação do Construtor
 Candidato::Candidato(const std::string& nome, const std::string& cpf,

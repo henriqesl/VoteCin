@@ -19,12 +19,14 @@ Para distribuir as atividades entre os membros do grupo, recomendo a seguinte ab
 ## **Sugestão de Distribuição por Membro**
 
 - Estruturar classes Eleitor e Candidato, fazer testes dessas partes. (**Robson**)  
-- Implementar, Voto e Urna, com integração na votação. (**Mateus Barbosa)**  
+- Implementar, Voto e Urna, com integração na votação. (**Mateus Barbosa**)  
 - Criar Eleição e integração na votação. ()  
 - Relatorio e lógica para gerar resultados. ()  
-- Desenvolver interface gráfica e integração com a classe SistemaVotacao. (**Henrique)**  
-    
+- Desenvolver interface gráfica e integração com a classe SistemaVotacao. (**Henrique**)  
+
+## **Observações**
+
 - Priorize o uso de encapsulamento e abstração nos atributos e métodos das classes.  
 - Utilize relacionamentos (composição e agregação) para conectar as classes.  
 - Utilize comentários explicativos em seu código
-
+- Os .TXTs contêm nomes e CPFs fictícios no formato CSV
