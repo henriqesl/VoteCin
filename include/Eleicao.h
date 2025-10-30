@@ -18,7 +18,7 @@ private:
     std::vector<Candidato*> candidatos; 
     std::map<std::string, Eleitor*> eleitores; // Chave: Titulo de Eleitor
     
-    // Composicao: A Eleicao cria e e dona da Urna
+    // Composicao: A Eleicao cria e é dona da Urna
     std::unique_ptr<Urna> urna; 
 
 public:
@@ -47,5 +47,6 @@ public:
     Urna* getUrna() const { return urna.get(); } // Retorna o ponteiro bruto da Urna
     std::string getStatus() const { return status; }
 };
+
 
 #endif
