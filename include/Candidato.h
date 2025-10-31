@@ -7,7 +7,7 @@
 // Armazena dados de candidatura (número, partido)
 // contabiliza o total de votos recebidos
 
-class Candidato : public Pessoa { // Herança pública
+class Candidato : public Pessoa{ // Herança pública
 private:
     int numeroCandidato;
     std::string partido;
@@ -26,6 +26,11 @@ public:
     int getNumeroCandidato() const;
     std::string getPartido() const;
     int getTotalVotos() const;
+
+    // sobrescrita polimórfica
+    virtual void imprimirDetalhes() const override;
+
+
 };
 
 #endif

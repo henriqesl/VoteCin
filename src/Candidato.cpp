@@ -1,4 +1,5 @@
 #include "Candidato.h"
+#include <iostream>
 
 // Implementação do Construtor
 Candidato::Candidato(const std::string& nome, const std::string& cpf,
@@ -25,4 +26,12 @@ std::string Candidato::getPartido() const {
 
 int Candidato::getTotalVotos() const {
     return totalVotos;
+}
+
+// implementação sobrescrita polimórfica
+void Candidato::imprimirDetalhes() const {
+    std::cout << "--- DADOS DO CANDIDATO ---" << std::endl;
+    Pessoa::imprimirDetalhes(); // Chama da classe base (Pessoa)
+    std::cout << "Numero: " << this->numeroCandidato << std::endl;
+    std::cout << "Partido: " << this->partido << std::endl;
 }

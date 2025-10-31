@@ -34,6 +34,7 @@ public:
     int getSecao() const;
     int getZona() const;
     bool getJaVotou() const;
+
 };
 
 #endif

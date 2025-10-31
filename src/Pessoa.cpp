@@ -1,4 +1,5 @@
 #include "pessoa.h"
+#include <iostream>
 
 // Construtor sem parâmetros
 Pessoa::Pessoa() {
@@ -28,4 +29,10 @@ void Pessoa::setNome(const std::string& nome) {
 
 void Pessoa::setCpf(const std::string& cpf) {
     this->cpf = cpf;
+}
+
+// implememtação da função virtual
+void Pessoa::imprimirDetalhes() const {
+  std::cout << "Nome: " << this->nome <<"/n";
+  std::cout << "CPF: " << this->cpf <<"/n";
 }

@@ -1,4 +1,5 @@
 #include "Eleitor.h"
+#include <iostream>
 
 // Implementação do Construtor
 Eleitor::Eleitor(const std::string& nome, const std::string& cpf,

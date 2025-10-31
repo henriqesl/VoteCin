@@ -17,6 +17,9 @@ public:
     std::string getCpf() const;
     void setNome(const std::string& nome);
     void setCpf(const std::string& cpf);
+
+    // adicionando função virtual para permitir polimorfismo
+    virtual void imprimirDetalhes() const;
 };
 
 #endif 
