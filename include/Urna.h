@@ -17,6 +17,9 @@ private:
     // Chave: numero do candidato (int), Valor: ponteiro para o objeto Candidato
     std::map<int, Candidato*> mapaCandidatos; 
 
+    int votosNulos;
+    int votosBrancos;
+
 public:
     // Construtor: Recebe a lista de candidatos disponiveis para referencia-los
     Urna(const std::vector<Candidato*>& candidatos);
@@ -27,6 +30,8 @@ public:
     // Getters para o Relatorio
     const std::vector<Voto>& getVotosRegistrados() const { return votosRegistrados; }
     const std::map<int, Candidato*>& getMapaCandidatos() const { return mapaCandidatos; }
+    int getVotosNulos() const { return votosNulos; }
+    int getVotosBrancos() const { return votosBrancos; }
 
 private:
     // Detalhe interno do processo (Ocultamento/Encapsulamento)

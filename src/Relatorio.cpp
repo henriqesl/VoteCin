@@ -31,14 +31,22 @@ void Relatorio::gerarEstatisticas(const Eleicao& eleicao) const {
     }
     
     int totalVotos = 0;
+    int votosNulos = 0;
+    int votosBrancos = 0;
     if (eleicao.getUrna()) {
-        totalVotos = eleicao.getUrna()->getVotosRegistrados().size();
+        Urna* urna = eleicao.getUrna();
+        totalVotos = urna->getVotosRegistrados().size();
+
+        votosNulos = urna->getVotosNulos();
+        votosBrancos = urna->getVotosBrancos();
     }
 
     std::cout << "Estatisticas Gerais:" << std::endl;
     std::cout << "- Eleitores Cadastrados: " << totalEleitores << std::endl;
     std::cout << "- Eleitores Votantes: " << eleitoresVotantes << std::endl; 
     std::cout << "- Total de Votos na Urna: " << totalVotos << std::endl;
+    std::cout << "- Votos Nulos: " << votosNulos << std::endl;
+    std::cout << "- Votos Brancos: " << votosBrancos << std::endl;
     std::cout << "----------------------------------------" << std::endl;
 }
 
