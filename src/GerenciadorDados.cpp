@@ -3,15 +3,13 @@
 #include <sstream>
 #include <iostream>
 #include <algorithm>
-#include <exception> // Necessário para std::exception
+#include <exception> 
 
-// Função auxiliar para dividir a string por delimitador
 std::vector<std::string> GerenciadorDados::split(const std::string& s, char delimiter) {
     std::vector<std::string> tokens;
     std::string token;
     std::istringstream tokenStream(s);
     while (std::getline(tokenStream, token, delimiter)) {
-        // Limpar espaços em branco à esquerda/direita, se necessário
         tokens.push_back(token);
     }
     return tokens;
@@ -34,7 +32,7 @@ std::vector<Candidato> GerenciadorDados::carregarCandidatos(const std::string& n
 
         if (campos.size() == 4) {
             try {
-                // Converte o número do candidato de string para int
+                // string --> int
                 int numero = std::stoi(campos[2]); 
                 
                 // Adiciona o novo candidato à lista
@@ -45,7 +43,6 @@ std::vector<Candidato> GerenciadorDados::carregarCandidatos(const std::string& n
                     campos[3]  // Partido
                 );
             } catch (const std::exception& e) {
-                // Se std::stoi falhar (ex: texto em vez de número)
                 std::cerr << "[AVISO] Linha invalida no arquivo de candidatos (ignorada): " << linha << std::endl;
             }
         } else {
@@ -72,7 +69,7 @@ std::vector<Eleitor> GerenciadorDados::carregarEleitores(const std::string& nome
 
         if (campos.size() == 5) {
             try {
-                // Converte Seção e Zona de string para int
+                // string --> int
                 int secao = std::stoi(campos[3]);
                 int zona = std::stoi(campos[4]);
                 
@@ -85,7 +82,6 @@ std::vector<Eleitor> GerenciadorDados::carregarEleitores(const std::string& nome
                     zona       // Zona
                 );
             } catch (const std::exception& e) {
-                 // Se std::stoi falhar (ex: texto em vez de número)
                 std::cerr << "[AVISO] Linha invalida no arquivo de eleitores (ignorada): " << linha << std::endl;
             }
         } else {

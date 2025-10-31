@@ -10,30 +10,29 @@ SistemaVotacao::SistemaVotacao(const std::string& dataEleicao)
 void SistemaVotacao::carregarDadosIniciais() {
     std::cout << "\n--- Preparacao da Eleicao ---" << std::endl;
     
-    // 1. CARREGAR CANDIDATOS DO ARQUIVO EXTERNO
+    // Carrega candidatos no arquivo externo
     candidatos = GerenciadorDados::carregarCandidatos("candidatos.txt");
     
-    // 2. Passar ponteiros para a Eleicao (Agregação)
+    // Passar ponteiros para a Eleicao
     std::cout << "--- Detalhes dos candidatos ---" << std::endl;
     for (Candidato& c : candidatos) {
         eleicaoAtual.adicionarCandidato(&c);
 
         Pessoa* p = &c; // Ponteiro da classe base
-        p->imprimirDetalhes(); // Chama a função de Candidato (Candidato::imprimirDetalhes())
+        p->imprimirDetalhes(); 
         std::cout << "--------------------------" << std::endl;
     }
 
-    // 3. CARREGAR ELEITORES DO ARQUIVO EXTERNO
+    // Carregar eleitores no arquivo externo
     eleitores = GerenciadorDados::carregarEleitores("eleitores.txt");
 
-    // 4. Passar ponteiros para a Eleicao (Agregação)
+    // Passar ponteiros para a Eleicao
     std::cout << "\n--- Detalhes dos Eleitores (Teste Polimorfismo) ---" << std::endl;
     for (Eleitor& e : eleitores) {
         eleicaoAtual.adicionarEleitor(&e);
 
-        // Teste de polimorfismo para Eleitor
         Pessoa* p = &e;
-        p->imprimirDetalhes(); // Chama a função de Eleitor (Eleitor::imprimirDetalhes())
+        p->imprimirDetalhes(); 
         std::cout << "--------------------------" << std::endl;
     }
     
@@ -50,7 +49,6 @@ void SistemaVotacao::encerrarVotacao() {
 }
 
 void SistemaVotacao::executarVotacao(const std::string& tituloEleitor, int numeroCandidato) {
-    // Abstração: O Sistema apenas chama o método votar da Eleicao.
     eleicaoAtual.votar(tituloEleitor, numeroCandidato);
 }
 
@@ -59,7 +57,6 @@ void SistemaVotacao::gerarResultados() {
     if (eleicaoAtual.getStatus() == "ATIVA") {
         encerrarVotacao();
     }
-    // Abstração: Chama o método gerarRelatorio, delegando a lógica de apuração.
     relatorio.gerarRelatorio(eleicaoAtual); 
 }
 

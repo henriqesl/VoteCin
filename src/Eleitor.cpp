@@ -1,10 +1,10 @@
 #include "Eleitor.h"
 #include <iostream>
 
-// Implementação do Construtor
+// Construtor
 Eleitor::Eleitor(const std::string& nome, const std::string& cpf,
                  const std::string& titulo, int secao, int zona)
-    : Pessoa(nome, cpf), // Chama o construtor da classe base Pessoa
+    : Pessoa(nome, cpf),
       tituloEleitor(titulo),
       secao(secao),
       zona(zona),
@@ -21,7 +21,7 @@ void Eleitor::registrarVoto() {
     this->jaVotou = true;
 }
 
-// Implementação dos Getters
+// Getters
 std::string Eleitor::getTituloEleitor() const {
     return tituloEleitor;
 }

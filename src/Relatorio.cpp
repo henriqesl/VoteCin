@@ -1,6 +1,6 @@
 #include "Relatorio.h"
 #include <iostream>
-#include <algorithm> // Para std::sort
+#include <algorithm>
 
 void Relatorio::gerarRelatorio(const Eleicao& eleicao) const {
     if (eleicao.getStatus() != "ENCERRADA") {
@@ -23,7 +23,7 @@ void Relatorio::gerarEstatisticas(const Eleicao& eleicao) const {
     int totalEleitores = eleitoresMap.size();
     int eleitoresVotantes = 0;
 
-    // Itera sobre o mapa de eleitores (Agregação) para verificar o estado de voto
+    // Itera sobre o mapa de eleitores verificando o estado de voto
     for (const auto& pair : eleitoresMap) {
         if (pair.second->getJaVotou()) {
             eleitoresVotantes++;
@@ -55,7 +55,7 @@ void Relatorio::apurarVencedor(const std::vector<Candidato*>& candidatos) const 
     
     std::vector<Candidato*> candidatosOrdenados = candidatos;
     
-    // 1. Ordena apenas por votos (decrescente)
+    // Ordena por votos (decrescente)
     std::sort(candidatosOrdenados.begin(), candidatosOrdenados.end(), 
         [](Candidato* a, Candidato* b) {
             return a->getTotalVotos() > b->getTotalVotos(); 
@@ -63,9 +63,8 @@ void Relatorio::apurarVencedor(const std::vector<Candidato*>& candidatos) const 
 
     Candidato* vencedor = candidatosOrdenados[0]; // O primeiro da lista é o que tem mais votos
 
-    // 2. VERIFICAÇÃO DE EMPATE
+    // Verificação de empate
     bool houveEmpate = false;
-    // Precisa de pelo menos 2 candidatos para ter empate
     if (candidatosOrdenados.size() >= 2) {
         // Compara os votos do 1º e do 2º colocado.
         Candidato* segundoColocado = candidatosOrdenados[1];
@@ -77,7 +76,7 @@ void Relatorio::apurarVencedor(const std::vector<Candidato*>& candidatos) const 
         }
     }
     
-    // 3. Imprime os resultados por candidato
+    // Imprime os resultados por candidato
     std::cout << "Resultados por Candidato:" << std::endl;
     
     for (Candidato* c : candidatosOrdenados) {
@@ -87,7 +86,7 @@ void Relatorio::apurarVencedor(const std::vector<Candidato*>& candidatos) const 
 
     std::cout << std::endl;
 
-    // 4. Imprime o Vencedor ou o Empate
+    // Imprime o Vencedor ou o Empate
     if (houveEmpate) {
         // Encontra todos os empatados para imprimir
         std::cout << ">>> HOUVE EMPATE NA LIDERANCA COM " << vencedor->getTotalVotos() << " VOTOS ENTRE:" << std::endl;

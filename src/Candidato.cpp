@@ -1,7 +1,7 @@
 #include "Candidato.h"
 #include <iostream>
 
-// Implementação do Construtor
+// Construtor
 Candidato::Candidato(const std::string& nome, const std::string& cpf,
                      int numero, const std::string& partido)
     : Pessoa(nome, cpf), // Chama o construtor da classe base Pessoa
@@ -10,12 +10,12 @@ Candidato::Candidato(const std::string& nome, const std::string& cpf,
       totalVotos(0) { // Todo candidato começa com 0 voto
 }
 
-// Implementação dos métodos
+// Métodos
 void Candidato::adicionarVoto() {
     this->totalVotos++;
 }
 
-// Implementação dos Getters
+// Getters
 int Candidato::getNumeroCandidato() const {
     return numeroCandidato;
 }
@@ -28,10 +28,8 @@ int Candidato::getTotalVotos() const {
     return totalVotos;
 }
 
-// implementação sobrescrita polimórfica
 void Candidato::imprimirDetalhes() const {
     std::cout << "--- DADOS DO CANDIDATO ---" << std::endl;
-    // Chama os getters da classe base em vez da função que foi removida
     std::cout << "Nome: " << getNome() << std::endl;
     std::cout << "CPF: " << getCpf() << std::endl;
     std::cout << "Numero: " << this->numeroCandidato << std::endl;

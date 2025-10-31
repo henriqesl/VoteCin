@@ -9,13 +9,13 @@ void Eleicao::adicionarCandidato(Candidato* c) {
 }
 
 void Eleicao::adicionarEleitor(Eleitor* e) {
-    // Chave do mapa é o título do eleitor, para busca rápida
+    // Chave é o título do eleitor
     eleitores[e->getTituloEleitor()] = e; 
 }
 
 void Eleicao::iniciarEleicao() {
     if (status == "NAO_INICIADA") {
-        // Cria a Urna (Composição) passando a lista de candidatos (Agregação)
+        // Cria a Urna passando a lista de candidatos
         urna = std::make_unique<Urna>(candidatos); 
         status = "ATIVA";
         std::cout << "Eleicao em " << data << " INICIADA. Urna pronta." << std::endl;
@@ -35,20 +35,20 @@ bool Eleicao::votar(const std::string& tituloEleitor, int numeroCandidato) {
         return false;
     }
     
-    // 1. Busca o eleitor (Agregação)
+    // Busca o eleitor
     Eleitor* eleitor = getEleitor(tituloEleitor);
     if (!eleitor) {
         std::cerr << "ERRO: Eleitor com titulo " << tituloEleitor << " nao cadastrado." << std::endl;
         return false;
     }
 
-    // 2. Delega a responsabilidade de votação para a Urna (Composição/Abstração)
+    // Delega a responsabilidade de votação para a Urna
     return urna->votar(*eleitor, numeroCandidato);
 }
 
 // GETTERS
 
-// Getter para buscar um eleitor específico
+// Busca um eleitor específico
 Eleitor* Eleicao::getEleitor(const std::string& titulo) const {
     auto it = eleitores.find(titulo);
     if (it != eleitores.end()) {
