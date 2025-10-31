@@ -3,6 +3,7 @@
 #include <sstream>
 #include <iostream>
 #include <algorithm>
+#include <exception> // Necessário para std::exception
 
 // Função auxiliar para dividir a string por delimitador
 std::vector<std::string> GerenciadorDados::split(const std::string& s, char delimiter) {
@@ -32,18 +33,23 @@ std::vector<Candidato> GerenciadorDados::carregarCandidatos(const std::string& n
         std::vector<std::string> campos = split(linha, ',');
 
         if (campos.size() == 4) {
-            // Converte o número do candidato de string para int
-            int numero = std::stoi(campos[2]); 
-            
-            // Adiciona o novo candidato à lista
-            listaCandidatos.emplace_back(
-                campos[0], // Nome
-                campos[1], // CPF
-                numero,    // Número
-                campos[3]  // Partido
-            );
+            try {
+                // Converte o número do candidato de string para int
+                int numero = std::stoi(campos[2]); 
+                
+                // Adiciona o novo candidato à lista
+                listaCandidatos.emplace_back(
+                    campos[0], // Nome
+                    campos[1], // CPF
+                    numero,    // Número
+                    campos[3]  // Partido
+                );
+            } catch (const std::exception& e) {
+                // Se std::stoi falhar (ex: texto em vez de número)
+                std::cerr << "[AVISO] Linha invalida no arquivo de candidatos (ignorada): " << linha << std::endl;
+            }
         } else {
-            std::cerr << "[AVISO] Linha invalida no arquivo de candidatos: " << linha << std::endl;
+            std::cerr << "[AVISO] Linha invalida no arquivo de candidatos (formato): " << linha << std::endl;
         }
     }
     return listaCandidatos;
@@ -65,20 +71,25 @@ std::vector<Eleitor> GerenciadorDados::carregarEleitores(const std::string& nome
         std::vector<std::string> campos = split(linha, ',');
 
         if (campos.size() == 5) {
-            // Converte Seção e Zona de string para int
-            int secao = std::stoi(campos[3]);
-            int zona = std::stoi(campos[4]);
-            
-            // Adiciona o novo eleitor à lista
-            listaEleitores.emplace_back(
-                campos[0], // Nome
-                campos[1], // CPF
-                campos[2], // Título
-                secao,     // Seção
-                zona       // Zona
-            );
+            try {
+                // Converte Seção e Zona de string para int
+                int secao = std::stoi(campos[3]);
+                int zona = std::stoi(campos[4]);
+                
+                // Adiciona o novo eleitor à lista
+                listaEleitores.emplace_back(
+                    campos[0], // Nome
+                    campos[1], // CPF
+                    campos[2], // Título
+                    secao,     // Seção
+                    zona       // Zona
+                );
+            } catch (const std::exception& e) {
+                 // Se std::stoi falhar (ex: texto em vez de número)
+                std::cerr << "[AVISO] Linha invalida no arquivo de eleitores (ignorada): " << linha << std::endl;
+            }
         } else {
-            std::cerr << "[AVISO] Linha invalida no arquivo de eleitores: " << linha << std::endl;
+            std::cerr << "[AVISO] Linha invalida no arquivo de eleitores (formato): " << linha << std::endl;
         }
     }
     return listaEleitores;

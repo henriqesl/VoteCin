@@ -1,11 +1,10 @@
 #ifndef CANDIDATO_H
 #define CANDIDATO_H
 
-#include "Pessoa.h" // Inclui a classe base
+#include "Pessoa.h" // Classe base
 
 // Representa um candidato, herdando de Pessoa
-// Armazena dados de candidatura (número, partido)
-// contabiliza o total de votos recebidos
+// Armazena dados de candidatura (número, partido) + contagem de votos
 
 class Candidato : public Pessoa{ // Herança pública
 private:
@@ -15,11 +14,9 @@ private:
 
 public:
     // Construtor
-    Candidato(const std::string& nome, const std::string& cpf,
-              int numero, const std::string& partido);
+    Candidato(const std::string& nome, const std::string& cpf, int numero, const std::string& partido);
 
-    // Incrementa o contador de votos do candidato
-
+    // Contador de votos do candidato
     void adicionarVoto();
 
     // GETTERS
@@ -27,9 +24,7 @@ public:
     std::string getPartido() const;
     int getTotalVotos() const;
 
-    // sobrescrita polimórfica
     virtual void imprimirDetalhes() const override;
-
 
 };
 

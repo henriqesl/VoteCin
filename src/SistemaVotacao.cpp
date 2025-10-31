@@ -27,11 +27,17 @@ void SistemaVotacao::carregarDadosIniciais() {
     eleitores = GerenciadorDados::carregarEleitores("eleitores.txt");
 
     // 4. Passar ponteiros para a Eleicao (Agregação)
+    std::cout << "\n--- Detalhes dos Eleitores (Teste Polimorfismo) ---" << std::endl;
     for (Eleitor& e : eleitores) {
         eleicaoAtual.adicionarEleitor(&e);
+
+        // Teste de polimorfismo para Eleitor
+        Pessoa* p = &e;
+        p->imprimirDetalhes(); // Chama a função de Eleitor (Eleitor::imprimirDetalhes())
+        std::cout << "--------------------------" << std::endl;
     }
     
-    std::cout << "Dados carregados: " << candidatos.size() 
+    std::cout << "\nDados carregados: " << candidatos.size() 
               << " Candidatos e " << eleitores.size() << " Eleitores." << std::endl;
 }
 
@@ -40,7 +46,7 @@ void SistemaVotacao::iniciarVotacao() {
 }
 
 void SistemaVotacao::encerrarVotacao() {
-    eleicaoAtual.encerrarEleicao();
+    eleicaoAtual.encerrarVotacao();
 }
 
 void SistemaVotacao::executarVotacao(const std::string& tituloEleitor, int numeroCandidato) {

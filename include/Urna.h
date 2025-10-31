@@ -5,26 +5,23 @@
 #include <map>
 #include <string>
 #include <iostream>
-#include "Voto.h"      // Composicao: Urna armazena Votos
-#include "Eleitor.h"   // Agregacao: Para validar Eleitores
-#include "Candidato.h" // Agregacao: Para contabilizar Candidatos
+#include "Voto.h"      
+#include "Eleitor.h"   
+#include "Candidato.h" 
 
 class Urna {
 private:
-    std::vector<Voto> votosRegistrados; // Composicao: A Urna eh dona desses votos
-    
-    // Agregacao: Usa ponteiros para Candidatos gerenciados pela Eleicao
-    // Chave: numero do candidato (int), Valor: ponteiro para o objeto Candidato
+    std::vector<Voto> votosRegistrados; // A urna é dona desses votos
     std::map<int, Candidato*> mapaCandidatos; 
 
     int votosNulos;
     int votosBrancos;
 
 public:
-    // Construtor: Recebe a lista de candidatos disponiveis para referencia-los
+    // Recebe a lista de candidatos disponiveis para referencia-los
     Urna(const std::vector<Candidato*>& candidatos);
 
-    // Abstracao: Metodo principal para efetuar o voto, lida com a validacao interna
+    // Metodo principal para realizar o voto
     bool votar(Eleitor& eleitor, int numeroCandidato);
 
     // Getters para o Relatorio
@@ -34,7 +31,7 @@ public:
     int getVotosBrancos() const { return votosBrancos; }
 
 private:
-    // Detalhe interno do processo (Ocultamento/Encapsulamento)
+    // Encapsulamento
     void processarVoto(const Eleitor& eleitor, int numeroCandidato);
 };
 

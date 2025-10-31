@@ -1,11 +1,11 @@
 #ifndef ELEITOR_H
 #define ELEITOR_H
 
-#include "Pessoa.h" // Inclui a classe base
+#include "Pessoa.h" // Classe base
+#include <iostream>
 
 // Representa um eleitor, herdando de Pessoa
-// Armazena dados de votação (título, seção, zona)
-// Controla o estado de votação (se já votou ou não)
+// Armazena dados de votação (título, seção, zona) + controla o estado da votação
 
 class Eleitor : public Pessoa { // Herança pública
 private:
@@ -24,8 +24,7 @@ public:
 
     bool podeVotar() const;
 
-    // Registra que o eleitor votou
-    // Altera o status 'jaVotou' para true
+    // Registra que o eleitor votou, alterando o valor de 'jaVotou'
 
     void registrarVoto();
 
@@ -34,6 +33,8 @@ public:
     int getSecao() const;
     int getZona() const;
     bool getJaVotou() const;
+
+    virtual void imprimirDetalhes() const override;
 
 };
 

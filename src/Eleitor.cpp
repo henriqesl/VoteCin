@@ -37,3 +37,10 @@ int Eleitor::getZona() const {
 bool Eleitor::getJaVotou() const {
     return jaVotou;
 }
+
+void Eleitor::imprimirDetalhes() const {
+    std::cout << "--- DADOS DO ELEITOR ---" << std::endl;
+    std::cout << "Nome: " << getNome() << std::endl;
+    std::cout << "CPF: " << getCpf() << std::endl;
+    std::cout << "Titulo: " << this->tituloEleitor << std::endl;
+}

@@ -8,16 +8,13 @@
 
 class GerenciadorDados {
 public:
-    // Le o arquivo de candidatos e preenche um vetor de Candidato
-
+    // Lê o arquivo de candidatos e preenche um vetor dos Candidatos
     static std::vector<Candidato> carregarCandidatos(const std::string& nomeArquivo);
 
-    // Le o arquivo de eleitores e preenche um vetor de Eleitor
-
+    // Lê o arquivo de eleitores e preenche um vetor dos Eleitores
     static std::vector<Eleitor> carregarEleitores(const std::string& nomeArquivo);
     
 private:
-    // Funcao auxiliar para dividir a linha por virgula
     static std::vector<std::string> split(const std::string& s, char delimiter);
 };
 

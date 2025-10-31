@@ -10,7 +10,7 @@ public:
     void gerarRelatorio(const Eleicao& eleicao) const;
 
 private:
-    // Funcoes auxiliares internas (Ocultamento/Encapsulamento)
+    // Funções internas, herdadas da eleição
     void apurarVencedor(const std::vector<Candidato*>& candidatos) const;
     void gerarEstatisticas(const Eleicao& eleicao) const;
 };

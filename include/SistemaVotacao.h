@@ -10,22 +10,21 @@
 
 class SistemaVotacao {
 private:
-    Eleicao eleicaoAtual; // Composicao: Gerencia o ciclo eleitoral
-    Relatorio relatorio;  // Composicao: Usa a funcionalidade de relatorio
+    Eleicao eleicaoAtual; // Ciclo eleitoral
+    Relatorio relatorio;  // Funcionalidade de relatorio
     
-    // Armazena os objetos reais (Eleitor e Candidato)
-    // Os ponteiros são usados na Eleicao
+    // Armazena os Eleitores e Candidatos
     std::vector<Candidato> candidatos;
     std::vector<Eleitor> eleitores;
 
 public:
-    // Construtor: Inicia o sistema com a data da eleicao
+    // Inicia o sistema com a data da eleicao
     SistemaVotacao(const std::string& dataEleicao);
 
-    // Simulacao de carregamento de dados (prepara a Eleicao para a votacao)
+    // Carregamento de dados
     void carregarDadosIniciais();
 
-    // Controle de fluxo principal (para a UI)
+    // Controle de fluxo principal (UI)
     void iniciarVotacao();
     void encerrarVotacao();
     void gerarResultados();

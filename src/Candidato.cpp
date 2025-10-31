@@ -31,7 +31,9 @@ int Candidato::getTotalVotos() const {
 // implementação sobrescrita polimórfica
 void Candidato::imprimirDetalhes() const {
     std::cout << "--- DADOS DO CANDIDATO ---" << std::endl;
-    Pessoa::imprimirDetalhes(); // Chama da classe base (Pessoa)
+    // Chama os getters da classe base em vez da função que foi removida
+    std::cout << "Nome: " << getNome() << std::endl;
+    std::cout << "CPF: " << getCpf() << std::endl;
     std::cout << "Numero: " << this->numeroCandidato << std::endl;
     std::cout << "Partido: " << this->partido << std::endl;
 }

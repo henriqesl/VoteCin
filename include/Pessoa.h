@@ -11,15 +11,17 @@ private:
 public:
     Pessoa();
     Pessoa(const std::string& nome, const std::string& cpf);  // Construtor com parâmetros
+    virtual ~Pessoa() = default; // Destrutor virtual
 
-    // (get/set)
+    // GETTERS
     std::string getNome() const;
     std::string getCpf() const;
+
+    // SETTERS
     void setNome(const std::string& nome);
     void setCpf(const std::string& cpf);
 
-    // adicionando função virtual para permitir polimorfismo
-    virtual void imprimirDetalhes() const;
+    virtual void imprimirDetalhes() const = 0;
 };
 
 #endif 
