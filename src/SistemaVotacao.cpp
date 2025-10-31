@@ -14,8 +14,13 @@ void SistemaVotacao::carregarDadosIniciais() {
     candidatos = GerenciadorDados::carregarCandidatos("candidatos.txt");
     
     // 2. Passar ponteiros para a Eleicao (Agregação)
+    std::cout << "--- Detalhes dos candidatos ---" << std::endl;
     for (Candidato& c : candidatos) {
-        eleicaoAtual.adicionarCandidato(&c); 
+        eleicaoAtual.adicionarCandidato(&c);
+
+        Pessoa* p = &c; // Ponteiro da classe base
+        p->imprimirDetalhes(); // Chama a função de Candidato (Candidato::imprimirDetalhes())
+        std::cout << "--------------------------" << std::endl;
     }
 
     // 3. CARREGAR ELEITORES DO ARQUIVO EXTERNO
