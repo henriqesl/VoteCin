@@ -1,5 +1,6 @@
 #include "SistemaVotacao.h"
 #include "GerenciadorDados.h"
+#include "Eleicao.h"
 #include <iostream>
 
 SistemaVotacao::SistemaVotacao(const std::string& dataEleicao)
@@ -45,7 +46,7 @@ void SistemaVotacao::iniciarVotacao() {
 }
 
 void SistemaVotacao::encerrarVotacao() {
-    eleicaoAtual.encerrarVotacao();
+    eleicaoAtual.encerrarEleicao();
 }
 
 void SistemaVotacao::executarVotacao(const std::string& tituloEleitor, int numeroCandidato) {

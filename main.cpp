@@ -9,7 +9,7 @@ void exibirMenu();
 // Função principal que gerencia o fluxo interativo do programa
 
 int main() {
-    // 1. Inicialização do Sistema
+    // Inicialização do Sistema
     std::cout << "========================================\n";
     std::cout << "  INICIANDO SISTEMA DE VOTACAO ELETRONICA \n";
     std::cout << "========================================\n";
@@ -20,7 +20,7 @@ int main() {
     int opcao = 0;
     std::string tituloEleitor;
     int numeroCandidato;
-    bool dadosCarregados = false; // Flag para garantir que os dados sejam carregados primeiro
+    bool dadosCarregados = false;
 
     do {
         exibirMenu();
@@ -29,13 +29,10 @@ int main() {
         // Garante que a entrada seja um número inteiro válido
         if (!(std::cin >> opcao)) {
             std::cout << "\n[ERRO] Entrada invalida. Por favor, digite um numero.\n";
-            std::cin.clear(); // Limpa o estado de erro
-            // Limpa o buffer para descartar a entrada inválida
+            std::cin.clear(); 
             std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-            continue; // Volta ao início do loop
-        }
-        
-        // Limpa o buffer após a leitura do número para evitar problemas com std::getline ou outras leituras de string
+            continue;
+
         std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 
         switch (opcao) {
@@ -56,7 +53,7 @@ int main() {
                 }
                 break;
                 
-            case 3: // Votar
+            case 3: 
                 if (sistema.getStatus() == "ATIVA") {
                     std::cout << "--- TELA DE VOTACAO ---\n";
                     std::cout << "Digite o Titulo de Eleitor: ";
@@ -65,14 +62,12 @@ int main() {
                     std::cout << "Digite o Numero do Candidato: ";
                     if (!(std::cin >> numeroCandidato)) {
                         std::cout << "[ERRO] Numero do candidato invalido.\n";
-                        // Limpa o buffer novamente em caso de erro na leitura do número
                         std::cin.clear(); 
                         std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
                         break; 
                     }
                     std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 
-                    // A função 'executarVotacao' já lida com a lógica e imprime o resultado
                     sistema.executarVotacao(tituloEleitor, numeroCandidato);
                     
                 } else {
@@ -95,11 +90,12 @@ int main() {
             default:
                 std::cout << "[AVISO] Opcao invalida. Tente novamente.\n";
                 break;
-        }
+            }
 
         if (opcao != 6) {
             std::cout << "\nPressione ENTER para continuar...\n";
             std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+            }
         }
 
     } while (opcao != 6);
