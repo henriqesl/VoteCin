@@ -3,10 +3,6 @@
 O **VoteCIN** é um sistema modular de votação desenvolvido em **C++**, com ênfase na **programação orientada a objetos (POO)** e **organização em camadas**.  
 O projeto busca oferecer uma solução didática e flexível para gerenciamento de votações via terminal, permitindo controle total por parte do administrador e participação aberta de usuários.
 
----
-
-## Resumo do Projeto
-
 O sistema foi desenvolvido com o propósito de aplicar conceitos de arquitetura de software e POO em um contexto prático.  
 O **VoteCIN** simula um ambiente de votação no qual um administrador é responsável por criar, configurar e encerrar votações, enquanto usuários podem registrar votos de forma simples e segura.  
 
@@ -25,7 +21,10 @@ A aplicação é totalmente executada no **terminal**, priorizando clareza na in
 
 ## Organização do Projeto
 
-O código é estruturado segundo uma **arquitetura em camadas**, separando responsabilidades entre interface (UI), lógica (CORE) e dados (DATA).  
+O código é estruturado segundo uma **arquitetura em camadas**, separando responsabilidades entre 
+interface (UI), 
+lógica (CORE) e 
+dados (DATA).  
 Essa divisão garante legibilidade, reuso e facilidade de manutenção.
 
 ```
@@ -99,5 +98,45 @@ cmake --build .
 Inicialmente você pode rodar o nosso CMakeLists.txt (run CMAKE), que irá criar uma pasta build em seu diretório do projeto.
 Após isso, você pode buildar e/ou dar run em nosso projeto, que deve compilar e iniciar automaticamente.
 
+---
+
 ## Desenvolvedores
 
+<div align="center">
+
+<table>
+  <tr>
+    <td align="center">
+      <a href="https://github.com/henriqesl" target="_blank">
+        <img src="https://avatars.githubusercontent.com/u/163488602?v=4" width="100px" style="border-radius:10px;"><br/>
+        <b>Henrique Lima</b>
+      </a>
+    </td>
+    <td align="center">
+      <a href="https://github.com/mateus-martinsz" target="_blank">
+        <img src="https://avatars.githubusercontent.com/u/239432605?v=4" width="100px" style="border-radius:10px;"><br/>
+        <b>Mateus Martins</b>
+      </a>
+    </td>
+    <td align="center">
+      <a href="https://github.com/robsonlcj" target="_blank">
+        <img src="https://avatars.githubusercontent.com/u/224187651?v=4" width="100px" style="border-radius:10px;"><br/>
+        <b>Robson Landim</b>
+      </a>
+    </td>
+    <td align="center">
+      <a href="https://github.com/mateuzera" target="_blank">
+        <img src="https://avatars.githubusercontent.com/u/235200827?v=4" width="100px" style="border-radius:10px;"><br/>
+        <b>Mateus Barbosa</b>
+      </a>
+    </td>
+    <td align="center">
+      <a href="https://github.com/Irafael4732" target="_blank">
+        <img src="https://avatars.githubusercontent.com/u/83982005?v=4" width="100px" style="border-radius:10px;"><br/>
+        <b>Igor Rafael</b>
+      </a>
+    </td>
+  </tr>
+</table>
+
+</div>
