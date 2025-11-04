@@ -1,63 +1,64 @@
 #include "Urna.h"
 #include <iostream> 
 
-// Inicializa o mapaCandidatos com as referências
-Urna::Urna(const std::vector<Candidato*>& candidatos)
-    // Inicializa os contadores
+// Inicializa os contadores e o mapa de opções válidas
+Urna::Urna(const std::vector<Opcao*>& opcoes)
     : votosNulos(0),
       votosBrancos(0)
 {
-    for (Candidato* c : candidatos) {
-        mapaCandidatos[c->getNumeroCandidato()] = c; 
+    // Preenche o mapa para acesso rápido
+    for (Opcao* o : opcoes) {
+        mapaOpcoes[o->getIdNumerico()] = o; 
     }
 }
 
-bool Urna::votar(Eleitor& eleitor, int numeroCandidato) {
-    // Validação do Eleitor
-    if (!eleitor.podeVotar()) {
-        std::cerr << "ERRO: Eleitor " << eleitor.getNome() << " ja votou." << std::endl;
-        return false;
+// Método principal: Processa o ato de votar
+bool Urna::votar(Votante& votante, int idOpcao) {
+    // Verifica se o votante PODE votar
+    if (!votante.podeVotar()) {
+        std::cout << "[AVISO] Votante " << votante.getNome() << " (ID: " << votante.getId() << ") ja votou." << std::endl;
+        return false; // Voto falhou, não registra
     }
 
-    bool votoProcessado = false; // Flag para indicar se o voto foi contabilizado
+    bool votoProcessado = false; // Flag para registrar o votante
 
-    // Classificação e Contagem do Voto
+    // Classificação do Voto
     
-    // VOTO BRANCO: Convenção 99
-    if (numeroCandidato == 99) {
+    // VOTO BRANCO (convenção: 99)
+    if (idOpcao == 99) {
         this->votosBrancos++;
         std::cout << "Voto BRANCO registrado com sucesso." << std::endl;
         votoProcessado = true;
     }
-    // VOTO EM CANDIDATO CADASTRADO
-    else if (mapaCandidatos.find(numeroCandidato) != mapaCandidatos.end()) {
-        // Voto VÁLIDO. Chamamos o processamento normal.
-        processarVoto(eleitor, numeroCandidato); 
-        std::cout << "Voto registrado com sucesso." << std::endl;
+    // VOTO VÁLIDO (número existe no mapa)
+    else if (mapaOpcoes.find(idOpcao) != mapaOpcoes.end()) {
+        processarVoto(idOpcao); // Chama helper para contar
+        // Confirmação para o usuário
+        Opcao* op = mapaOpcoes.at(idOpcao);
+        std::cout << "Voto confirmado para: [" << op->getIdNumerico() << "] " 
+                  << op->getNome() << " - " << op->getDescricao() << std::endl;
         votoProcessado = true;
     }
-    // VOTO NULO: Qualquer outro número que não é Candidato e não é 99
+    // VOTO NULO (qualquer outro número)
     else {
         this->votosNulos++;
-        std::cerr << "AVISO: Numero " << numeroCandidato << " nao encontrado. Voto NULO registrado." << std::endl;
-        votoProcessado = true; 
+        std::cerr << "AVISO: Numero " << idOpcao << " nao e uma opcao valida. Voto NULO registrado." << std::endl;
+        votoProcessado = true; // Voto nulo ainda conta como "ter votado"
     }
 
-    // Registro do Eleitor e do Voto
+    // Finalização
     if (votoProcessado) {
-        eleitor.registrarVoto(); // Marca o Eleitor como votado
+        votante.registrarVoto(); // Marca o Votante como 'jaVotou'
         
-        // Registra o Voto na Urna 
-        Voto novoVoto(eleitor.getTituloEleitor(), numeroCandidato);
-        votosRegistrados.push_back(novoVoto);
-
-        return true;
+        // Adiciona ao log da Urna
+        votosRegistrados.emplace_back(votante.getId(), idOpcao);
+        return true; // Voto registrado com sucesso
     }
 
-    return false;
+    return false; 
 }
 
-void Urna::processarVoto(const Eleitor& eleitor, int numeroCandidato) {
-    // Contabiliza APENAS no Candidato
-    mapaCandidatos.at(numeroCandidato)->adicionarVoto(); 
+// Helper interno para incrementar o voto na Opcao
+void Urna::processarVoto(int idOpcao) {
+    mapaOpcoes.at(idOpcao)->adicionarVoto(); 
 }

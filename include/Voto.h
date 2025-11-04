@@ -3,20 +3,20 @@
 
 #include <string>
 
-// Registra um voto, vinculando o eleitor ao candidato
+// Classe de dados simples (struct)
+// Representa um registro de log: "Quem votou em quê"
 class Voto {
 private:
-    std::string tituloEleitor;
-    int numeroCandidato;
-    
-public:
-    // Construtor
-    Voto(const std::string& titulo, int numero) 
-        : tituloEleitor(titulo), numeroCandidato(numero) {}
+    std::string idVotante;   // ID (nome) do votante
+    int idOpcao;             // Número da opção
 
-    // Getters
-    std::string getTituloEleitor() const { return tituloEleitor; }
-    int getNumeroCandidato() const { return numeroCandidato; }
+public:
+    Voto(const std::string& idVotante, int idOpcao) 
+        : idVotante(idVotante), idOpcao(idOpcao) {}
+
+    // --- Getters ---
+    std::string getIdVotante() const { return idVotante; }
+    int getIdOpcao() const { return idOpcao; }
 };
 
 #endif

@@ -1,18 +1,20 @@
 #ifndef RELATORIO_H
 #define RELATORIO_H
 
-#include "Eleicao.h"
+#include "Votacao.h" 
 #include <iostream>
 
+// Classe utilitária que gera a impressão dos resultados
 class Relatorio {
 public:
-    // Gera o relatorio consultando a Eleicao
-    void gerarRelatorio(const Eleicao& eleicao) const;
+    // Imprime o relatório completo (estatísticas, vencedor, participantes)
+    void gerarRelatorio(const Votacao& votacao) const; 
 
 private:
-    // Funções internas, herdadas da eleição
-    void apurarVencedor(const std::vector<Candidato*>& candidatos) const;
-    void gerarEstatisticas(const Eleicao& eleicao) const;
+    // --- Funções helpers ---
+    void apurarVencedor(const std::vector<Opcao*>& opcoes) const;
+    void gerarEstatisticas(const Votacao& votacao) const;
+    void listarParticipantes(const Votacao& votacao) const;
 };
 
 #endif

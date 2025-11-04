@@ -1,0 +1,5 @@
+Elden Ring,RPG de Acao,1
+Baldur's Gate 3,RPG de Turno,2
+Counter-Strike 2,FPS Competitivo,10
+Stardew Valley,Simulador de Fazenda,33
+League of Legends,MOBA,7
