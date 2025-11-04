@@ -3,8 +3,8 @@
 
 #include <vector>
 #include <string>
-#include "Opcao.h"   
-#include "Votante.h" 
+#include "models/Opcao.h"   
+#include "models/Votante.h" 
 
 // Classe utilitária para ler e escrever nos arquivos .txt.
 class GerenciadorDados {

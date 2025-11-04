@@ -1,7 +1,7 @@
 #ifndef VOTECIN_TELA_H
 #define VOTECIN_TELA_H
 
-#include "../GerenciadorVotacoes.h" 
+#include "core/GerenciadorVotacoes.h" 
 
 // Classe base abstrata para todas as telas
 class Tela {

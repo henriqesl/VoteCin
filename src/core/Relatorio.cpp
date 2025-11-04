@@ -1,7 +1,7 @@
-#include "Relatorio.h"
-#include "Opcao.h"
-#include "Votante.h"
-#include "Urna.h"
+#include "core/Relatorio.h"
+#include "models/Opcao.h"
+#include "models/Votante.h"
+#include "core/Urna.h"
 #include <iostream>
 #include <algorithm>
 

@@ -1,10 +1,10 @@
-#include "../../include/ui/UtilsUI.h"
-#include <iostream>
-#include <limits>
-#include <cstdlib>
-#include <stdexcept>
-#include <thread>
-#include <chrono>
+#include "ui/UtilsUI.h"
+#include <iostream>  
+#include <limits>    
+#include <cstdlib>   
+#include <stdexcept> 
+#include <thread>    
+#include <chrono>    
 
 // Limpa o terminal
 void UtilsUI::limparTela() {
@@ -15,15 +15,16 @@ void UtilsUI::limparTela() {
     #endif
 }
 
-// Lê uma linha inteira e converte para int
+// Lê uma linha inteira e converte para int com segurança
 int UtilsUI::lerOpcaoNumerica() {
     std::string input;
     std::getline(std::cin, input);
     try {
-        if (input.empty()) return -1;
-        return std::stoi(input); // Converte string para int
+        if (input.empty()) return -1; // Trata entrada vazia
+        return std::stoi(input); // Tenta converter string para int
     } catch (const std::exception& e) {
-        return -1; // Retorna -1 se a conversão falhar
+        // Se a conversão falhar, retorna -1
+        return -1; 
     }
 }
 
@@ -55,7 +56,7 @@ std::string UtilsUI::selecionarArquivoDeOpcoes() {
     std::string basePath = "../resources/"; 
     std::string arquivoEscolhido;
 
-    // Seleção do modo de votação
+    // Define qual arquivo de template carregar
     switch (tipo) {
         case 1:
             std::cout << "\nCarregando 'opcoes_filmes.txt'...\n";
@@ -75,14 +76,14 @@ std::string UtilsUI::selecionarArquivoDeOpcoes() {
             arquivoEscolhido = basePath + "opcoes_vazia.txt";
             break;
     }
-    std::this_thread::sleep_for(std::chrono::seconds(2)); // Pausa para feedback
+    std::this_thread::sleep_for(std::chrono::seconds(2));
     return arquivoEscolhido;
 }
 
 // Pausa a execução até o usuário pressionar ENTER
 void UtilsUI::pausar() {
     std::cout << "\n...pressione ENTER para continuar...\n" << std::flush;
-    // Limpa o buffer de entrada antes de esperar
+    // Limpa qualquer 'enter' residual do buffer antes de esperar
     std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
     std::cin.get();
 }
@@ -94,7 +95,7 @@ bool UtilsUI::loginAdmin() {
     std::string usuario = lerStringNaoVazia("Utilizador: ");
     std::string senha = lerStringNaoVazia("Senha: ");
 
-    // Login fixo
+    // Credenciais fixas (hardcoded)
     if (usuario == "admin" && senha == "admin") {
         std::cout << "Login de admin bem-sucedido!\n";
         std::this_thread::sleep_for(std::chrono::seconds(1));

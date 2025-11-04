@@ -2,4 +2,4 @@ Japao (Toquio),Asia (Urbano),1
 Italia (Roma),Europa (Historico),7
 Grecia (Santorini),Europa (Praia/Ilha),22
 Brasil (Fernando de Noronha),America do Sul (Praia/Natureza),10
-Canada (Vancouver),America do Norte (Natureza/Urbano),15
+Dubai,Muito caro,5

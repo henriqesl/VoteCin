@@ -1,18 +1,19 @@
-#include "include/GerenciadorVotacoes.h"
-#include "include/ui/TelaPrincipal.h"
-#include "include/ui/UtilsUI.h"
+#include "core/GerenciadorVotacoes.h"  // A Camada de Lógica (BLL)
+#include "ui/TelaPrincipal.h"     // A primeira Tela da UI
+#include "ui/UtilsUI.h"           // Funções utilitárias da UI
 
-// Ponto de entrada do programa.
-// Responsável pela configuração inicial e pelo loop principal da máquina de estados (Telas).
+#include <thread>
+#include <chrono>
+
 int main() {
     
-    
-    // Mostra a UI de seleção de template
+    // Chama a UI de seleção de template
     std::string arquivoOpcoes = UtilsUI::selecionarArquivoDeOpcoes();
     
+    // Cria a camada de Lógica do gerenciador
     GerenciadorVotacoes sistema("Votacao CIn", "04/11/2025");
     
-    // Carrega os dados iniciais
+    // UI "pede" para o gerenciador carregar os dados
     std::cout << "A carregar dados da votacao...\n";
     sistema.carregarDadosIniciais(arquivoOpcoes);
     
@@ -20,11 +21,11 @@ int main() {
     std::cout << "A iniciar menu principal em 3 segundos..." << std::endl << std::flush;
     std::this_thread::sleep_for(std::chrono::seconds(3));
     
-    // Começa pela TelaPrincipal
     Tela* telaAtual = new TelaPrincipal(sistema);
     
     // O loop continua enquanto a telaAtual não for nula
     while (telaAtual != nullptr) {
+        
         // Executa a tela atual e pede a próxima
         Tela* proxima = telaAtual->proximaTela();
         
@@ -35,7 +36,7 @@ int main() {
         telaAtual = proxima; 
     }
 
-    // Função CLEANUP
+    // Função CLEANUP 
     UtilsUI::limparTela();
     std::cout << "========================================\n";
     std::cout << "    SISTEMA DE VOTACAO FINALIZADO\n";

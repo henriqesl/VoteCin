@@ -1,6 +1,6 @@
-#include "../../include/ui/TelaVotacao.h"
-#include "../../include/ui/TelaPrincipal.h" // Para onde ela volta
-#include "../../include/ui/UtilsUI.h"
+#include "ui/TelaVotacao.h"
+#include "ui/TelaPrincipal.h" // Para onde ela volta
+#include "ui/UtilsUI.h"
 
 #include <iostream>
 
@@ -14,7 +14,7 @@ Tela* TelaVotacao::proximaTela() {
         std::cout << "--- SESSAO DE VOTACAO ATIVA ---\n";
         std::cout << "Votacao: " << sistema.getTituloVotacao() << "\n\n";
 
-        // UI chama gerenciador para listar opções
+        // 1. UI chama gerenciador para listar opções
         sistema.listarOpcoesParaVotacao(); 
 
         std::cout << "\n----------------------------------------\n";
@@ -29,7 +29,7 @@ Tela* TelaVotacao::proximaTela() {
             break; 
         }
 
-        // UI chama gerenciador para obter ou criar o votante
+        // 3. UI chama gerenciador para obter ou criar votante
         Votante* votante = sistema.getVotantePorNome(nomeVotante);
 
         if (votante == nullptr) {
@@ -50,13 +50,13 @@ Tela* TelaVotacao::proximaTela() {
             if (idOpcao == -1) {
                 std::cout << "[ERRO] Numero da opcao invalido.\n";
             } else {
-                // UI chama o gerenciador para processar o voto
+                // UI chama gerenciador para processar o voto
                 sistema.executarVotacao(*votante, idOpcao); 
             }
         }
         
         UtilsUI::pausar();
-    }
+    } 
 
     // Retorna para a Tela Principal
     return new TelaPrincipal(sistema);

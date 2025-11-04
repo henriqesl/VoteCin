@@ -1,4 +1,4 @@
-#include "Votante.h"
+#include "models/Votante.h"
 #include <iostream>
 
 // Construtor: Chama o construtor da classe base (Participante)

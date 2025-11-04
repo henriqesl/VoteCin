@@ -4,9 +4,9 @@
 #include <vector>
 #include <map>
 #include <string>
-#include "Voto.h"      
-#include "Votante.h" 
-#include "Opcao.h"   
+#include "models/Voto.h"      
+#include "models/Votante.h" 
+#include "models/Opcao.h"   
 
 // Controla a lógica do "ato de votar"
 // Verifica duplicidade, conta nulos/brancos

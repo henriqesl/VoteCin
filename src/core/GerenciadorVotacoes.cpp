@@ -1,6 +1,6 @@
-#include "GerenciadorVotacoes.h"
-#include "GerenciadorDados.h"
-#include "Votacao.h"
+#include "core/GerenciadorVotacoes.h"
+#include "data/GerenciadorDados.h"
+#include "core/Votacao.h"
 #include <iostream>
 #include <limits> 
 #include <algorithm>
@@ -48,12 +48,21 @@ void GerenciadorVotacoes::gerarResultados() {
     relatorio.gerarRelatorio(votacaoAtual);
 }
 
+void GerenciadorVotacoes::gerarResultadosParciais() const {
+    relatorio.gerarRelatorio(votacaoAtual);
+}
+
 std::string GerenciadorVotacoes::getStatus() const {
     return votacaoAtual.getStatus();
 }
 
 std::string GerenciadorVotacoes::getTituloVotacao() const {
     return votacaoAtual.getTitulo();
+}
+
+void GerenciadorVotacoes::setTituloVotacao(const std::string& novoTitulo) {
+    votacaoAtual.setTitulo(novoTitulo);
+    std::cout << "Titulo da votacao alterado para: " << novoTitulo << std::endl;
 }
 
 // --- Lógica de Votação ---

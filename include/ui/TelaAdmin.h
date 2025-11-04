@@ -16,6 +16,7 @@ private:
     void fluxoAdicionarOpcao();
     void fluxoRemoverOpcao();
     void fluxoEncerrarEGerarRelatorio();
+    void fluxoAlterarTitulo();
 };
 
 #endif //VOTECIN_TELAADMIN_H

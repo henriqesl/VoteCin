@@ -1,4 +1,4 @@
-#include "Urna.h"
+#include "core/Urna.h"
 #include <iostream> 
 
 // Inicializa os contadores e o mapa de opções válidas

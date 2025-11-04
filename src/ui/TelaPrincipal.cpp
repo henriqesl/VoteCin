@@ -1,7 +1,7 @@
-#include "../../include/ui/TelaPrincipal.h"
-#include "../../include/ui/TelaAdmin.h"
-#include "../../include/ui/TelaVotacao.h"
-#include "../../include/ui/UtilsUI.h"
+#include "ui/TelaPrincipal.h"
+#include "ui/TelaAdmin.h"    
+#include "ui/TelaVotacao.h"  
+#include "ui/UtilsUI.h"      
 
 #include <iostream>
 #include <thread>
@@ -21,27 +21,26 @@ Tela* TelaPrincipal::proximaTela() {
 
     int tipoUsuario = UtilsUI::lerOpcaoNumerica(); 
 
-    // Lógica de navegação
+    // Lógica de navegação (decide qual objeto Tela retornar)
     switch (tipoUsuario) {
         case 1: // Ir para a tela de Admin
             if (UtilsUI::loginAdmin()) {
-                return new TelaAdmin(sistema);
+                return new TelaAdmin(sistema); // Próxima tela: Admin
             }
             return new TelaPrincipal(sistema);
 
         case 2: // Ir para a tela de Votação
-            // Só conseguirá votar, se a votação estiver ativa
             if (sistema.getStatus() == "ATIVA") {
-                return new TelaVotacao(sistema);
+                return new TelaVotacao(sistema); // Próxima tela: Votação
             } else if (sistema.getStatus() == "NAO_INICIADA") {
                 std::cout << "\n[AVISO] A votacao ainda nao foi iniciada pelo Administrador." << std::endl;
             } else { // ENCERRADA
                 std::cout << "\n[AVISO] A votacao ja foi encerrada." << std::endl;
             }
             std::this_thread::sleep_for(std::chrono::seconds(2));
-            return new TelaPrincipal(sistema); // Fica nesta tela
+            return new TelaPrincipal(sistema); // Permanece nesta tela
 
-        case 3: // Sair
+        case 3:
             std::cout << "A encerrar programa...\n";
             return nullptr; // Sinaliza para o main.cpp encerrar o loop
 

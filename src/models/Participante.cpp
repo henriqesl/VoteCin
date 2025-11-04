@@ -1,4 +1,4 @@
-#include "Participante.h"
+#include "models/Participante.h"
 #include <iostream>
 
 // Construtor padrão

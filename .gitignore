@@ -3,6 +3,11 @@
 
 /.vscode/
 /.idea/
+.xml
+misc.xml
+modules.xml
+/.idea/vcs
+/.idea/VoteCin.iml
 *.pro.user*
 *.qbs.user*
 CMakeLists.txt.user*
