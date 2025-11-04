@@ -110,6 +110,11 @@ void GerenciadorVotacoes::adicionarNovaOpcao(int idNum, const std::string& nome,
         return;
     }
     
+    if (idNum == 99) {
+        std::cout << "[ERRO] O numero 99 e reservado para Voto Branco. Operacao cancelada.\n";
+        return;
+    }
+
     // ID não pode ser duplicado
     for(const auto& op : opcoes) {
         if(op.getIdNumerico() == idNum) {
