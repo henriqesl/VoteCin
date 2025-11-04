@@ -1,6 +1,7 @@
 #include "core/GerenciadorVotacoes.h"  // A Camada de Lógica (BLL)
 #include "ui/TelaPrincipal.h"     // A primeira Tela da UI
 #include "ui/UtilsUI.h"           // Funções utilitárias da UI
+#include "data/GerenciadorDados.h"
 
 #include <thread>
 #include <chrono>
@@ -38,6 +39,9 @@ int main() {
 
     // Função CLEANUP 
     UtilsUI::limparTela();
+
+    GerenciadorDados::limparLogVotantes();
+    
     std::cout << "========================================\n";
     std::cout << "    SISTEMA DE VOTACAO FINALIZADO\n";
     std::cout << "========================================\n";

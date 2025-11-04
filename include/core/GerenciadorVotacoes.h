@@ -29,7 +29,7 @@ public:
     void carregarDadosIniciais(const std::string& arquivoOpcoes);
 
     // --- Controle de Fluxo (Admin) ---
-    void iniciarVotacao();
+    bool iniciarVotacao();
     void encerrarVotacao();
     void gerarResultados();
     void gerarResultadosParciais() const; 

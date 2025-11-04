@@ -35,7 +35,7 @@ public:
     void limparOpcoes();
 
     // --- Controle de Fluxo ---
-    void iniciarVotacao(); 
+    bool iniciarVotacao(); 
     void encerrarVotacao();
 
     bool votar(Votante& votante, int idOpcao);

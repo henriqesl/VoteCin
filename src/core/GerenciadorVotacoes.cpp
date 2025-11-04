@@ -29,8 +29,8 @@ void GerenciadorVotacoes::carregarDadosIniciais(const std::string& arquivoOpcoes
 }
 
 // --- Funções de Controle de Votação (delegam para Votacao) ---
-void GerenciadorVotacoes::iniciarVotacao() {
-    votacaoAtual.iniciarVotacao();
+bool GerenciadorVotacoes::iniciarVotacao() {
+    return votacaoAtual.iniciarVotacao();
 }
 
 void GerenciadorVotacoes::encerrarVotacao() {

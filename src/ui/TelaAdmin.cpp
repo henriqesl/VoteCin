@@ -1,8 +1,11 @@
 #include "ui/TelaAdmin.h"
 #include "ui/TelaPrincipal.h"
+#include "ui/TelaVotacao.h"
 #include "ui/UtilsUI.h"
 
 #include <iostream>
+#include <thread> 
+#include <chrono>
 
 // Loop do menu de admin
 Tela* TelaAdmin::proximaTela() {
@@ -41,9 +44,19 @@ Tela* TelaAdmin::proximaTela() {
             case 3: // DELETE
                 fluxoRemoverOpcao(); 
                 break;
-            case 4: // INICIAR
-                sistema.iniciarVotacao(); 
+            case 4: { // INICIAR
+                bool sucesso = sistema.iniciarVotacao(); 
+                
+                if (sucesso) {
+                    // Se teve sucesso, faz a transição de tela
+                    std::cout << "Votacao iniciada! Redirecionando para a tela de votacao...\n";
+                    std::this_thread::sleep_for(std::chrono::seconds(2));
+                    return new TelaVotacao(sistema); 
+                }
+                devePausar = true;
                 break;
+            };
+
             case 5: // ENCERRAR E RELATÓRIO
                 fluxoEncerrarEGerarRelatorio(); 
                 devePausar = false; 

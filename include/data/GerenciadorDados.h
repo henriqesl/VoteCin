@@ -21,6 +21,8 @@ public:
     // Salva o log de votantes (quem votou, novos votantes)
     static void salvarVotantes(const std::string& nomeArquivo, const std::vector<Votante>& votantes);
 
+    static void limparLogVotantes();
+
 private:
     // Helper interno para quebrar linhas por vírgula
     static std::vector<std::string> split(const std::string& s, char delimiter);

@@ -22,16 +22,19 @@ void Votacao::limparOpcoes() {
     urna.reset(nullptr); 
 }
 
-void Votacao::iniciarVotacao() {
+bool Votacao::iniciarVotacao() {
     if (status == "NAO_INICIADA") {
         if (opcoes.empty()) {
             std::cout << "[ERRO] Nao e possivel iniciar uma votacao sem opcoes. Adicione opcoes no menu Admin.\n";
-            return;
+            return false;
         }
         urna = std::make_unique<Urna>(opcoes); 
         status = "ATIVA";
         std::cout << "Votacao '" << titulo << "' (Data: " << data << ") INICIADA. Urna pronta." << std::endl;
+        return true; // Sucesso
     }
+    std::cout << "[AVISO] A votacao ja foi iniciada (ou encerrada).\n";
+    return false; 
 }
 
 void Votacao::encerrarVotacao() {

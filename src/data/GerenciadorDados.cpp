@@ -104,3 +104,13 @@ void GerenciadorDados::salvarVotantes(const std::string& nomeArquivo, const std:
         // NOTA: O status 'jaVotou' não é salvo
     }
 }
+
+void GerenciadorDados::limparLogVotantes() {
+    std::cout << "Limpando log de votantes..." << std::endl;
+    // std::ofstream::trunc apaga o conteúdo do arquivo ao abrir
+    std::ofstream arquivo("../resources/votantes.txt", std::ofstream::trunc);
+    if (!arquivo.is_open()) {
+        std::cerr << "[ERRO] Nao foi possivel limpar o log de votantes." << std::endl;
+    }
+    // O arquivo é esvaziado e fechado (quando 'arquivo' sai de escopo)
+}
