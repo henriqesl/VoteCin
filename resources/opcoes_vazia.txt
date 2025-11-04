@@ -1,3 +1,0 @@
-Presencial,Tipo de trabalho,1
-H¡brido,Tipo de trabalho,2
-HomeOffice,Modalidade de trabalho,3

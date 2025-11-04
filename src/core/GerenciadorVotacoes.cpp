@@ -4,6 +4,7 @@
 #include <iostream>
 #include <limits> 
 #include <algorithm>
+#include <list>
 
 // Construtor: Inicializa a Votacao com título e data
 GerenciadorVotacoes::GerenciadorVotacoes(const std::string& tituloVotacao, const std::string& dataVotacao)
@@ -160,9 +161,9 @@ void GerenciadorVotacoes::removerOpcao(int idNum) {
 }
 
 // --- Funções de Autosave (Privadas) ---
+
 void GerenciadorVotacoes::autoSalvarOpcoes() {
-    GerenciadorDados::salvarOpcoes(arquivoOpcoesAtual, opcoes);
-    std::cout << "[AUTOSAVE] Lista de opcoes foi salva em " << arquivoOpcoesAtual << ".\n";
+    // VAZIO
 }
 
 void GerenciadorVotacoes::autoSalvarVotantes() {

@@ -6,7 +6,7 @@
 #include "models/Votante.h"
 #include "models/Opcao.h"     
 #include <string>
-#include <vector>
+#include <list>
 
 // Classe principal que orquestra todo o sistema.
 class GerenciadorVotacoes {
@@ -14,8 +14,8 @@ private:
     Votacao votacaoAtual; 
     Relatorio relatorio;  
     
-    std::vector<Opcao> opcoes;
-    std::vector<Votante> votantes;
+    std::list<Opcao> opcoes;
+    std::list<Votante> votantes;
 
     std::string arquivoOpcoesAtual; 
 

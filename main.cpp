@@ -7,6 +7,8 @@
 #include <chrono>
 
 int main() {
+    // Garante que cada sessão comece com votantes zerados.
+    GerenciadorDados::limparLogVotantes();
     
     // Chama a UI de seleção de template
     std::string arquivoOpcoes = UtilsUI::selecionarArquivoDeOpcoes();

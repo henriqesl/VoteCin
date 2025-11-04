@@ -2,6 +2,7 @@
 #define GERENCIADORDADOS_H
 
 #include <vector>
+#include <list>
 #include <string>
 #include "models/Opcao.h"   
 #include "models/Votante.h" 
@@ -10,16 +11,16 @@
 class GerenciadorDados {
 public:
     // Carrega a lista de opções (filmes, jogos, etc) de um arquivo
-    static std::vector<Opcao> carregarOpcoes(const std::string& nomeArquivo);
+    static std::list<Opcao> carregarOpcoes(const std::string& nomeArquivo);
 
     // Carrega o histórico de votantes do votantes.txt
-    static std::vector<Votante> carregarVotantes(const std::string& nomeArquivo);
+    static std::list<Votante> carregarVotantes(const std::string& nomeArquivo);
     
     // Salva as opções (CRUD do Admin) no arquivo de template
-    static void salvarOpcoes(const std::string& nomeArquivo, const std::vector<Opcao>& opcoes);
+    static void salvarOpcoes(const std::string& nomeArquivo, const std::list<Opcao>& opcoes);
     
     // Salva o log de votantes (quem votou, novos votantes)
-    static void salvarVotantes(const std::string& nomeArquivo, const std::vector<Votante>& votantes);
+    static void salvarVotantes(const std::string& nomeArquivo, const std::list<Votante>& votantes);
 
     static void limparLogVotantes();
 

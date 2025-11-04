@@ -30,28 +30,28 @@ Tela* TelaAdmin::proximaTela() {
             std::cout << "1. Adicionar Nova Opcao\n";
             std::cout << "2. Listar Opcoes Atuais\n";
             std::cout << "3. Remover Opcao \n";
-            std::cout << "4. Iniciar Votacao (Abre para o publico)\n";
-            std::cout << "5. Encerrar Votacao (BLOQUEADO))\n";
-            std::cout << "6. Ver Resultados (BLOQUEADO)\n"; 
+            std::cout << "4. Iniciar Votacao [Abre para o publico]\n";
+            std::cout << "5. Encerrar Votacao [BLOQUEADO]\n";
+            std::cout << "6. Ver Resultados [BLOQUEADO]\n"; 
             std::cout << "7. Alterar Titulo da Votacao\n";
         } else if (status == "ATIVA") {
             // Módulo "Durante a Votação"
-            std::cout << "1. Adicionar Nova Opcao (BLOQUEADO))\n";
+            std::cout << "1. Adicionar Nova Opcao [BLOQUEADO]\n";
             std::cout << "2. Listar Opcoes Atuais\n";
-            std::cout << "3. Remover Opcao (BLOQUEADO)\n";
-            std::cout << "4. Iniciar Votacao (JÁ INICIADA)\n";
+            std::cout << "3. Remover Opcao [BLOQUEADO]\n";
+            std::cout << "4. Iniciar Votacao [JA INICIADA]\n";
             std::cout << "5. Encerrar Votacao e Gerar Relatorio Final\n";
             std::cout << "6. Ver Resultados Parciais\n"; 
-            std::cout << "7. Alterar Titulo da Votacao (BLOQUEADO)\n";
+            std::cout << "7. Alterar Titulo da Votacao [BLOQUEADO]\n";
         } else { // "ENCERRADA"
             // Módulo "Após Encerrar"
-            std::cout << "1. Adicionar Nova Opcao (BLOQUEADO)\n";
+            std::cout << "1. Adicionar Nova Opcao [BLOQUEADO]\n";
             std::cout << "2. Listar Opcoes Atuais\n";
-            std::cout << "3. Remover Opcao (BLOQUEADO)\n";
-            std::cout << "4. Iniciar Votacao (BLOQUEADO)\n";
-            std::cout << "5. Gerar Relatorio Final (JÁ ENCERRADA)\n";
-            std::cout << "6. Ver Relatorio Final (JÁ ENCERRADA)\n"; 
-            std::cout << "7. Alterar Titulo da Votacao (BLOQUEADO)\n";
+            std::cout << "3. Remover Opcao [BLOQUEADO]\n";
+            std::cout << "4. Iniciar Votacao [BLOQUEADO]\n";
+            std::cout << "5. Gerar Relatorio Final [JA ENCERRADA]\n";
+            std::cout << "6. Ver Relatorio Final [JA ENCERRADA]\n"; 
+            std::cout << "7. Alterar Titulo da Votacao [BLOQUEADO]\n";
         }
 
         std::cout << "---------------------------------\n";
