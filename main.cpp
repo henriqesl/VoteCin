@@ -8,7 +8,6 @@
 #include "GerenciadorVotacoes.h" 
 #include "Votante.h"             
 
-// --- Funções Helper (Definidas aqui, visíveis apenas para main.cpp) ---
 void limparTela() {
     #ifdef _WIN32
         std::system("cls");
@@ -40,7 +39,6 @@ std::string lerStringNaoVazia(const std::string& prompt) {
     return input;
 }
 
-// --- Função de Seleção de Template (sem alteração) ---
 std::string selecionarArquivoDeOpcoes() {
     limparTela();
     std::cout << "--- CONFIGURACAO INICIAL DO SISTEMA ---\n";
@@ -66,13 +64,11 @@ std::string selecionarArquivoDeOpcoes() {
             break;
         case 3:
             std::cout << "\nCarregando 'opcoes_viagens.txt'...\n";
-            // Corrigindo o nome do arquivo que você enviou
             arquivoEscolhido = basePath + "opcoes_viagem.txt"; 
             break;
         case 4: 
         default:
             std::cout << "\nCarregando 'opcoes_vazia.txt' (votacao personalizada)...\n";
-            // Você precisa criar este arquivo na pasta resources
             arquivoEscolhido = basePath + "opcoes_vazia.txt"; 
             break;
     }
@@ -80,12 +76,10 @@ std::string selecionarArquivoDeOpcoes() {
 }
 
 
-// --- Protótipos dos Menus ---
 bool loginAdmin();
 void menuAdmin(GerenciadorVotacoes& sistema); 
 void iniciarSessaoDeVotacao(GerenciadorVotacoes& sistema); 
 
-// --- FUNÇÃO MAIN (sem alteração) ---
 int main() {
     limparTela();
     std::cout << "========================================\n";
@@ -134,7 +128,7 @@ int main() {
                     std::cout << "\n[AVISO] A votacao ainda nao foi iniciada pelo Administrador." << std::endl;
                     std::cout << "Volte mais tarde." << std::endl;
                     std::this_thread::sleep_for(std::chrono::seconds(2));
-                } else { // ENCERRADA
+                } else { 
                     std::cout << "\n[AVISO] A votacao ja foi encerrada." << std::endl;
                     std::cout << "Peca para um Admin gerar o relatorio." << std::endl;
                     std::this_thread::sleep_for(std::chrono::seconds(2));
@@ -159,7 +153,6 @@ int main() {
     return 0;
 }
 
-// --- Login Admin (sem alteração) ---
 bool loginAdmin() {
     limparTela();
     std::string usuario, senha;
@@ -178,7 +171,6 @@ bool loginAdmin() {
     return false;
 }
 
-// --- MENU ADMIN (Refatorado - Coleta de dados na UI) ---
 void menuAdmin(GerenciadorVotacoes& sistema) { 
     int opcao = 0;
     do {
@@ -200,11 +192,10 @@ void menuAdmin(GerenciadorVotacoes& sistema) {
         bool devePausar = true; 
 
         switch(opcao) {
-            case 1: { // Adicionar Nova Opcao
+            case 1: { 
                 limparTela();
                 std::cout << "--- Adicionar Nova Opcao Votavel ---\n";
                 
-                // 1. Coletar dados na UI (main.cpp)
                 std::string nome = lerStringNaoVazia("Nome (ex: 'O Poderoso Chefao'): ");
                 std::string descricao = lerStringNaoVazia("Descricao (ex: 'Filme de Mafia'): ");
                 std::cout << "Numero para Votacao (ex: 10): " << std::flush;
@@ -213,20 +204,19 @@ void menuAdmin(GerenciadorVotacoes& sistema) {
                 if (idNum == -1) {
                      std::cout << "[ERRO] Numero invalido. Operacao cancelada.\n";
                 } else {
-                     // 2. Passar dados para a BLL
                      sistema.adicionarNovaOpcao(idNum, nome, descricao);
                 }
                 break;
             }
-            case 2: // Listar Opcoes
+            case 2: 
                 limparTela();
                 std::cout << "--- LISTA DE OPCOES ATUAIS ---\n";
                 sistema.listarOpcoesAdmin(); 
                 break;
-            case 3: { // Remover Opcao
+            case 3: { 
                 limparTela();
                 std::cout << "--- Remover Opcao Votavel ---\n";
-                sistema.listarOpcoesAdmin(); // Mostra a lista primeiro
+                sistema.listarOpcoesAdmin(); 
                 
                 std::cout << "\nDigite o NUMERO da opcao que deseja remover: " << std::flush;
                 int idNum = lerOpcaoNumerica();
@@ -234,15 +224,14 @@ void menuAdmin(GerenciadorVotacoes& sistema) {
                 if (idNum == -1) {
                     std::cout << "[ERRO] Numero invalido. Operacao cancelada.\n";
                 } else {
-                    // 2. Passar ID para a BLL
                     sistema.removerOpcao(idNum);
                 }
                 break;
             }
-            case 4: // Iniciar
+            case 4: 
                 sistema.iniciarVotacao();
                 break;
-            case 5: // Encerrar e Gerar Relatório
+            case 5: 
                 if (sistema.getStatus() == "NAO_INICIADA") {
                     std::cout << "[AVISO] Votacao nem sequer foi iniciada.\n";
                     break;
@@ -250,17 +239,17 @@ void menuAdmin(GerenciadorVotacoes& sistema) {
                 if (sistema.getStatus() == "ENCERRADA") {
                     std::cout << "A votacao ja esta encerrada. Gerando relatorio novamente...\n";
                 } else {
-                    sistema.encerrarVotacao(); // Encerra
+                    sistema.encerrarVotacao(); 
                 }
                 
                 limparTela();
                 std::cout << "--- VOTACAO ENCERRADA ---\n";
-                sistema.gerarResultados(); // Gera o relatório
+                sistema.gerarResultados(); 
                 std::cout << "\n\nRelatorio gerado. Pressione ENTER para voltar...\n" << std::flush;
                 std::cin.get();
                 devePausar = false;
                 break;
-            case 6: // Sair
+            case 6: 
                 std::cout << "A retornar ao menu principal...\n";
                 devePausar = false;
                 break;
@@ -280,7 +269,6 @@ void menuAdmin(GerenciadorVotacoes& sistema) {
 }
 
 
-// --- SESSÃO DE VOTAÇÃO (sem alteração) ---
 void iniciarSessaoDeVotacao(GerenciadorVotacoes& sistema) { 
     
     std::string nomeVotante;
