@@ -112,7 +112,7 @@
 <body>
     <div class="container">
         <header>
-            <h1>Projeto VoteCIn</h1>
+            <h1>📜 Projeto VoteCIn</h1>
             <p>Um sistema de gerenciamento de votações em C++ com foco em Arquitetura em Camadas e POO.</p>
         </header>
 
@@ -122,21 +122,21 @@
             <p>Acesse o relatório completo, o código-fonte no GitHub e o vídeo de demonstração do projeto.</p>
             
             <a href="https://docs.google.com/document/d/1IRw9_jklSWIrgNJS5wZ2IfCsQ5Nng_Thgih9YqItUnQ" target="_blank" class="link-button">
-                Relatório Completo
+                📝 Relatório Completo
             </a>
 
             <a href="https://github.com/henriqesl/VoteCin" target="_blank" class="link-button">
-                Código Fonte (GitHub)
+                💻 Código Fonte (GitHub)
             </a>
 
             <a href="https://www.youtube.com/watch?v=zHqa79tL4rw" target="_blank" class="link-button">
-                Vídeo de Demonstração
+                🎬 Vídeo de Demonstração
             </a>
         </section>
 
         <!-- SEÇÃO 2: VISÃO GERAL (Do relatório) -->
         <section class="section">
-            <h2>Visão Geral e Proposta</h2>
+            <h2>💡 Visão Geral e Proposta</h2>
             <p>
                 O VoteCin é um sistema de gerenciamento de votações desenvolvido em C++, com foco em modularidade, extensibilidade e forte aderência aos princípios da Programação Orientada a Objetos (POO).
             </p>
@@ -147,7 +147,7 @@
 
         <!-- SEÇÃO 3: ARQUITETURA (Do relatório) -->
         <section class="section">
-            <h2>Arquitetura do Software – Arquitetura em Camadas</h2>
+            <h2>🏛️ Arquitetura do Software – Arquitetura em Camadas</h2>
             <p>
                 O projeto adota uma Arquitetura em Camadas (Layered Architecture), dividindo o sistema em responsabilidades distintas:
             </p>
@@ -159,49 +159,12 @@
             </ul>
             <p>O fluxo segue dependência unidirecional: <code>UI → CORE → DATA</code>, enquanto <code>MODELS</code> é usado por todas.</p>
             
-            <!-- Diagrama de Arquitetura (Mermaid) -->
-            <pre class="mermaid">
-graph TD
-    Usuario --> UI
-    
-    subgraph UI [Camada de Apresentação (ui/)]
-        TelaPrincipal
-        TelaAdmin
-        TelaVotacao
-        UtilsUI
-    end
-    
-    UI --> CORE
-    
-    subgraph CORE [Camada de Lógica de Negócios (core/)]
-        GerenciadorVotacoes
-        Votacao
-        Urna
-        Relatorio
-    end
-    
-    CORE --> DATA
-    CORE --> MODELS
-    
-    subgraph DATA [Camada de Acesso a Dados (data/)]
-        GerenciadorDados
-    end
-    
-    subgraph MODELS [Camada de Modelos (models/)]
-        Votante
-        Opcao
-        Voto
-        Participante
-    end
-    
-    DATA --> Arquivos[("resources/*.txt")]
-    DATA --> MODELS
-            </pre>
+            <!-- Diagrama de Arquitetura (Mermaid) REMOVIDO -->
         </section>
 
         <!-- SEÇÃO 4: PRINCÍPIOS DE POO (Do relatório) -->
         <section class="section">
-            <h2>Princípios de POO Aplicados</h2>
+            <h2>🚀 Princípios de POO Aplicados</h2>
             <p>O sistema VoteCin foi projetado com base nos quatro pilares da Programação Orientada a Objetos:</p>
             <ul>
                 <li><strong>Abstração:</strong> Classes como <code>Tela</code> e <code>Participante</code> definem contratos genéricos (interfaces puras) que ocultam detalhes de implementação, permitindo que novas telas ou entidades sejam adicionadas sem alterar o restante do código.</li>
@@ -213,7 +176,7 @@ graph TD
 
         <!-- SEÇÃO 5: DESAFIOS (Do relatório) -->
         <section class="section">
-            <h2>Desafios e Decisões Técnicas</h2>
+            <h2>🔧 Desafios e Decisões Técnicas</h2>
             <ul>
                 <li>
                     <strong>Corrupção de Memória (<code>std::bad_alloc</code>):</strong>
@@ -230,106 +193,15 @@ graph TD
         
         <!-- SEÇÃO 6: DIAGRAMA DE CLASSES (Do relatório) -->
         <section class="section">
-            <h2>Diagrama de Classes (UML)</h2>
+            <h2>🧬 Diagrama de Classes (UML)</h2>
             <p>O diagrama abaixo ilustra as principais classes do sistema e suas relações (Herança, Composição e Agregação).</p>
-            <!-- Diagrama de Classes (Mermaid) -->
-            <pre class="mermaid">
-classDiagram
-    direction LR
-
-    class GerenciadorVotacoes {
-        -Votacao votacaoAtual
-        -list~Opcao~ opcoes
-        -list~Votante~ votantes
-        +iniciarVotacao()
-        +executarVotacao()
-        +adicionarNovaOpcao()
-    }
-
-    class Votacao {
-        -string status
-        -unique_ptr~Urna~ urna
-        -vector~Opcao*~ opcoes
-        -map~string, Votante*~ votantes
-        +iniciarVotacao()
-        +votar(Votante&, int)
-    }
-
-    class Urna {
-        -vector~Voto~ votosRegistrados
-        -map~int, Opcao*~ mapaOpcoes
-        +votar(Votante&, int)
-    }
-
-    class Relatorio {
-        +gerarRelatorio(Votacao&)
-    }
-
-    class GerenciadorDados {
-        <<static>>
-        +list~Opcao~ carregarOpcoes(string)
-        +list~Votante~ carregarVotantes(string)
-        +salvarVotantes(string, list~Votante~)
-    }
-
-    class Tela {
-        <<Abstract>>
-        #GerenciadorVotacoes& sistema
-        +proximaTela()* Tela*
-    }
-
-    class TelaPrincipal { +proximaTela() Tela* }
-    class TelaAdmin { +proximaTela() Tela* }
-    class TelaVotacao { +proximaTela() Tela* }
-
-    class Participante {
-        <<Abstract>>
-        -string nome
-        -string id
-        +imprimirDetalhes()* void
-    }
-
-    class Votante {
-        -bool jaVotou
-        +podeVotar() bool
-        +registrarVoto() void
-    }
-    
-    class Opcao {
-        -int idNumerico
-        -int totalVotos
-        +adicionarVoto()
-    }
-
-    ' Relacionamentos
-    GerenciadorVotacoes "1" o-- "1" Votacao : contém
-    GerenciadorVotacoes "1" o-- "1" Relatorio : usa
-    GerenciadorVotacoes "1" *-- "N" Opcao : possui (owner)
-    GerenciadorVotacoes "1" *-- "N" Votante : possui (owner)
-    
-    GerenciadorVotacoes ..> GerenciadorDados : usa
-
-    Votacao "1" *-- "0..1" Urna : contém (unique_ptr)
-    Votacao ..> Opcao : agrega (ponteiro)
-    Votacao ..> Votante : agrega (ponteiro)
-    
-    Urna ..> Votante : usa
-    Urna ..> Opcao : usa (ponteiro)
-    
-    Tela <|-- TelaPrincipal
-    Tela <|-- TelaAdmin
-    Tela <|-- TelaVotacao
-    
-    main ..> Tela : usa
-    Tela ..> GerenciadorVotacoes : referencia
-
-    Participante <|-- Votante
-            </pre>
+            <!-- Diagrama de Classes (Mermaid) REMOVIDO -->
+            <p><i>(Diagrama de classes disponível no <a href="https://docs.google.com/document/d/1IRw9_jklSWIrgNJS5wZ2IfCsQ5Nng_Thgih9YqItUnQ" target="_blank">Relatório Completo</a>.)</i></p>
         </section>
 
         <!-- SEÇÃO 7: DIVISÃO DE TAREFAS (Do relatório) -->
         <section class="section">
-            <h2>Divisão de Tarefas</h2>
+            <h2>👨‍💻 Divisão de Tarefas</h2>
             <table>
                 <thead>
                     <tr>
@@ -367,8 +239,6 @@ classDiagram
         </footer>
     </div>
 
-    <!-- Script para renderizar os diagramas Mermaid -->
-    <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
-    <script>mermaid.initialize({startOnLoad:true});</script>
+    <!-- Script para renderizar os diagramas Mermaid REMOVIDO -->
 </body>
 </html>
