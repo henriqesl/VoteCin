@@ -173,23 +173,6 @@
                 <li><strong>Polimorfismo:</strong> O comportamento dinâmico do sistema é obtido na <code>main.cpp</code> através da chamada polimórfica <code>telaAtual->proximaTela()</code>, onde o C++ decide em tempo de execução qual implementação de tela (Admin, Principal, etc.) deve ser exibida (Padrão de Design *State*).</li>
             </ul>
         </section>
-
-        <!-- SEÇÃO 5: DESAFIOS (Do relatório) -->
-        <section class="section">
-            <h2>🔧 Desafios e Decisões Técnicas</h2>
-            <ul>
-                <li>
-                    <strong>Corrupção de Memória (<code>std::bad_alloc</code>):</strong>
-                    O bug mais crítico do projeto [cite: image_bb4aad.png-1bbc31bd-2005-49fa-ba4f-eea059d368ca]. Foi causado pelo uso de <code>std::vector</code> para armazenar votantes, enquanto um <code>std::map</code> armazenava ponteiros para eles. A realocação do vetor invalidava os ponteiros, corrompendo a memória.
-                    <br><strong>Solução:</strong> Substituição de <code>std::vector</code> por <code>std::list</code> [cite: henriqesl/votecin/VoteCin-5b66cf7fd2b67fdbcba26c18b85a7d71013025e6/include/core/GerenciadorVotacoes.h, henriqesl/votecin/VoteCin-5b66cf7fd2b67fdbcba26c18b85a7d71013025e6/include/data/GerenciadorDados.h], que garante a estabilidade dos ponteiros após inserções.
-                </li>
-                <li>
-                    <strong>Estado Persistente Indevido:</strong>
-                    Dados de sessões antigas (votantes e opções) permaneciam entre as execuções.
-                    <br><strong>Solução:</strong> Desativação de <code>autoSalvarOpcoes</code> (para não "sujar" os templates) e chamada de <code>limparLogVotantes()</code> no início do <code>main.cpp</code> [cite: henriqesl/votecin/VoteCin-5b66cf7fd2b67fdbcba26c18b85a7d71013025e6/main.cpp] para garantir sessões limpas.
-                </li>
-            </ul>
-        </section>
         
         <!-- SEÇÃO 6: DIAGRAMA DE CLASSES (Do relatório) -->
         <section class="section">
