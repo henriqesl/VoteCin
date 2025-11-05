@@ -5,53 +5,370 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Projeto VoteCIn</title>
     <style>
-        body { font-family: Arial, sans-serif; line-height: 1.6; margin: 20px; }
-        .container { max-width: 800px; margin: auto; }
-        h1 { color: #333; }
-        .section { margin-bottom: 30px; padding: 15px; border-left: 5px solid #007bff; background-color: #f8f9fa; }
-        .link-button { display: inline-block; padding: 10px 20px; margin-right: 10px; background-color: #007bff; color: white; text-decoration: none; border-radius: 5px; }
-        .link-button:hover { background-color: #0056b3; }
+        body { 
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; 
+            line-height: 1.6; 
+            margin: 0;
+            padding: 0;
+            background-color: #f4f7f6;
+            color: #333;
+        }
+        .container { 
+            max-width: 900px; 
+            margin: 20px auto; 
+            padding: 20px;
+        }
+        header {
+            text-align: center;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+        h1 { 
+            color: #222;
+            margin-bottom: 0.5rem;
+        }
+        h2 {
+            color: #0056b3; /* Tom de azul do botão */
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 5px;
+            margin-top: 0;
+        }
+        p {
+            margin-bottom: 1rem;
+        }
+        ul {
+            padding-left: 20px;
+        }
+        li {
+            margin-bottom: 0.5rem;
+        }
+        .section { 
+            margin-bottom: 30px; 
+            padding: 25px; 
+            background-color: #ffffff; 
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            border: 1px solid #e0e0e0;
+        }
+        .links-rapidos {
+            text-align: center;
+        }
+        .link-button { 
+            display: inline-block; 
+            padding: 12px 24px; 
+            margin: 5px; 
+            background-color: #007bff; 
+            color: white; 
+            text-decoration: none; 
+            border-radius: 5px; 
+            font-weight: bold;
+            transition: background-color 0.2s ease;
+        }
+        .link-button:hover { 
+            background-color: #0056b3; 
+        }
+        /* Estilos para a tabela */
+        table { 
+            width: 100%; 
+            border-collapse: collapse; 
+            margin-top: 15px; 
+        }
+        th, td { 
+            border: 1px solid #ddd; 
+            padding: 12px; 
+            text-align: left; 
+            vertical-align: top;
+        }
+        th { 
+            background-color: #007bff; 
+            color: white; 
+            font-size: 0.9rem;
+            text-transform: uppercase;
+        }
+        tr:nth-child(even) { 
+            background-color: #f9f9f9; 
+        }
+        /* Estilo para código e diagramas */
+        pre, code {
+            font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace;
+            font-size: 0.95rem;
+        }
+        pre.mermaid {
+            background-color: #fdfdfd;
+            padding: 15px;
+            border-radius: 5px;
+            border: 1px solid #eee;
+            text-align: center;
+        }
+        footer { 
+            text-align: center; 
+            margin-top: 30px; 
+            color: #777; 
+            font-size: 0.9rem;
+        }
     </style>
 </head>
 <body>
     <div class="container">
         <header>
-            <h1>📜 Projeto VoteCIn</h1>
-            <p>Esta é a página central de acesso a todos os materiais de documentação do nosso projeto.</p>
-            <hr>
+            <h1>Projeto VoteCIn</h1>
+            <p>Um sistema de gerenciamento de votações em C++ com foco em Arquitetura em Camadas e POO.</p>
         </header>
 
-        <section class="section">
-            <h2>🔗 Acesso Rápido aos Documentos</h2>
-            <p>Clique nos botões abaixo para acessar os materiais de apoio e o código do projeto:</p>
+        <!-- SEÇÃO 1: LINKS RÁPIDOS (Mantida do original) -->
+        <section class="section links-rapidos">
+            <h2>🔗 Acesso Rápido aos Materiais</h2>
+            <p>Acesse o relatório completo, o código-fonte no GitHub e o vídeo de demonstração do projeto.</p>
             
             <a href="https://docs.google.com/document/d/1IRw9_jklSWIrgNJS5wZ2IfCsQ5Nng_Thgih9YqItUnQ" target="_blank" class="link-button">
-                📝 Relatório Completo (Google Docs/PDF)
+                Relatório Completo
             </a>
 
             <a href="https://github.com/henriqesl/VoteCin" target="_blank" class="link-button">
-                💻 Código Fonte Comentado (GitHub)
+                Código Fonte (GitHub)
             </a>
 
             <a href="https://www.youtube.com/watch?v=zHqa79tL4rw" target="_blank" class="link-button">
-                🎬 Vídeo de Demonstração (YouTube)
+                Vídeo de Demonstração
             </a>
         </section>
 
+        <!-- SEÇÃO 2: VISÃO GERAL (Do relatório) -->
         <section class="section">
-            <h2>💡 Sobre o Projeto</h2>
-            <p>Este projeto é um sistema de gerenciamento de votações desenvolvido em C++, projetado para simular e administrar processos eleitorais fornecendo uma solução para organizar, registrar e apurar votos, eliminando a necessidade de métodos manuais e minimizando erros de contagem.</p>
-            
-            <h3>Tecnologias Utilizadas:</h3>
+            <h2>Visão Geral e Proposta</h2>
+            <p>
+                O VoteCin é um sistema de gerenciamento de votações desenvolvido em C++, com foco em modularidade, extensibilidade e forte aderência aos princípios da Programação Orientada a Objetos (POO).
+            </p>
+            <p>
+                O objetivo do sistema é oferecer uma interface de terminal onde um Administrador pode configurar votações, enquanto o Público realiza votos de forma simples e transparente. O projeto é flexível, permitindo diferentes tipos de votação (filmes, jogos etc.) e gerencia todo o ciclo, desde a configuração ao relatório final.
+            </p>
+        </section>
+
+        <!-- SEÇÃO 3: ARQUITETURA (Do relatório) -->
+        <section class="section">
+            <h2>Arquitetura do Software – Arquitetura em Camadas</h2>
+            <p>
+                O projeto adota uma Arquitetura em Camadas (Layered Architecture), dividindo o sistema em responsabilidades distintas:
+            </p>
             <ul>
-                <li>Linguagem Principal: C++</li>
-                <li>Programação Orientada a Objetos</li>
+                <li><strong>UI (Interfaces):</strong> Interação com o usuário (menus, entrada e saída).</li>
+                <li><strong>CORE (Lógica de Negócios):</strong> Regras do sistema e orquestração das ações.</li>
+                <li><strong>DATA (Acesso a Dados):</strong> Leitura e escrita em arquivos <code>.txt</code>.</li>
+                <li><strong>MODELS (Entidades):</strong> Armazenamento de dados e estados.</li>
             </ul>
+            <p>O fluxo segue dependência unidirecional: <code>UI → CORE → DATA</code>, enquanto <code>MODELS</code> é usado por todas.</p>
+            
+            <!-- Diagrama de Arquitetura (Mermaid) -->
+            <pre class="mermaid">
+graph TD
+    Usuario --> UI
+    
+    subgraph UI [Camada de Apresentação (ui/)]
+        TelaPrincipal
+        TelaAdmin
+        TelaVotacao
+        UtilsUI
+    end
+    
+    UI --> CORE
+    
+    subgraph CORE [Camada de Lógica de Negócios (core/)]
+        GerenciadorVotacoes
+        Votacao
+        Urna
+        Relatorio
+    end
+    
+    CORE --> DATA
+    CORE --> MODELS
+    
+    subgraph DATA [Camada de Acesso a Dados (data/)]
+        GerenciadorDados
+    end
+    
+    subgraph MODELS [Camada de Modelos (models/)]
+        Votante
+        Opcao
+        Voto
+        Participante
+    end
+    
+    DATA --> Arquivos[("resources/*.txt")]
+    DATA --> MODELS
+            </pre>
+        </section>
+
+        <!-- SEÇÃO 4: PRINCÍPIOS DE POO (Do relatório) -->
+        <section class="section">
+            <h2>Princípios de POO Aplicados</h2>
+            <p>O sistema VoteCin foi projetado com base nos quatro pilares da Programação Orientada a Objetos:</p>
+            <ul>
+                <li><strong>Abstração:</strong> Classes como <code>Tela</code> e <code>Participante</code> definem contratos genéricos (interfaces puras) que ocultam detalhes de implementação, permitindo que novas telas ou entidades sejam adicionadas sem alterar o restante do código.</li>
+                <li><strong>Herança:</strong> Utilizada para reutilização e especialização. As telas concretas (<code>TelaAdmin</code>, <code>TelaVotacao</code>) herdam de <code>Tela</code>, enquanto <code>Votante</code> herda de <code>Participante</code>.</li>
+                <li><strong>Encapsulamento:</strong> Atributos sensíveis, como <code>jaVotou</code> em <code>Votante</code>, são privados e acessados apenas por métodos controlados (<code>registrarVoto()</code>, <code>podeVotar()</code>), garantindo a integridade dos dados.</li>
+                <li><strong>Polimorfismo:</strong> O comportamento dinâmico do sistema é obtido na <code>main.cpp</code> através da chamada polimórfica <code>telaAtual->proximaTela()</code>, onde o C++ decide em tempo de execução qual implementação de tela (Admin, Principal, etc.) deve ser exibida (Padrão de Design *State*).</li>
+            </ul>
+        </section>
+
+        <!-- SEÇÃO 5: DESAFIOS (Do relatório) -->
+        <section class="section">
+            <h2>Desafios e Decisões Técnicas</h2>
+            <ul>
+                <li>
+                    <strong>Corrupção de Memória (<code>std::bad_alloc</code>):</strong>
+                    O bug mais crítico do projeto [cite: image_bb4aad.png-1bbc31bd-2005-49fa-ba4f-eea059d368ca]. Foi causado pelo uso de <code>std::vector</code> para armazenar votantes, enquanto um <code>std::map</code> armazenava ponteiros para eles. A realocação do vetor invalidava os ponteiros, corrompendo a memória.
+                    <br><strong>Solução:</strong> Substituição de <code>std::vector</code> por <code>std::list</code> [cite: henriqesl/votecin/VoteCin-5b66cf7fd2b67fdbcba26c18b85a7d71013025e6/include/core/GerenciadorVotacoes.h, henriqesl/votecin/VoteCin-5b66cf7fd2b67fdbcba26c18b85a7d71013025e6/include/data/GerenciadorDados.h], que garante a estabilidade dos ponteiros após inserções.
+                </li>
+                <li>
+                    <strong>Estado Persistente Indevido:</strong>
+                    Dados de sessões antigas (votantes e opções) permaneciam entre as execuções.
+                    <br><strong>Solução:</strong> Desativação de <code>autoSalvarOpcoes</code> (para não "sujar" os templates) e chamada de <code>limparLogVotantes()</code> no início do <code>main.cpp</code> [cite: henriqesl/votecin/VoteCin-5b66cf7fd2b67fdbcba26c18b85a7d71013025e6/main.cpp] para garantir sessões limpas.
+                </li>
+            </ul>
+        </section>
+        
+        <!-- SEÇÃO 6: DIAGRAMA DE CLASSES (Do relatório) -->
+        <section class="section">
+            <h2>Diagrama de Classes (UML)</h2>
+            <p>O diagrama abaixo ilustra as principais classes do sistema e suas relações (Herança, Composição e Agregação).</p>
+            <!-- Diagrama de Classes (Mermaid) -->
+            <pre class="mermaid">
+classDiagram
+    direction LR
+
+    class GerenciadorVotacoes {
+        -Votacao votacaoAtual
+        -list~Opcao~ opcoes
+        -list~Votante~ votantes
+        +iniciarVotacao()
+        +executarVotacao()
+        +adicionarNovaOpcao()
+    }
+
+    class Votacao {
+        -string status
+        -unique_ptr~Urna~ urna
+        -vector~Opcao*~ opcoes
+        -map~string, Votante*~ votantes
+        +iniciarVotacao()
+        +votar(Votante&, int)
+    }
+
+    class Urna {
+        -vector~Voto~ votosRegistrados
+        -map~int, Opcao*~ mapaOpcoes
+        +votar(Votante&, int)
+    }
+
+    class Relatorio {
+        +gerarRelatorio(Votacao&)
+    }
+
+    class GerenciadorDados {
+        <<static>>
+        +list~Opcao~ carregarOpcoes(string)
+        +list~Votante~ carregarVotantes(string)
+        +salvarVotantes(string, list~Votante~)
+    }
+
+    class Tela {
+        <<Abstract>>
+        #GerenciadorVotacoes& sistema
+        +proximaTela()* Tela*
+    }
+
+    class TelaPrincipal { +proximaTela() Tela* }
+    class TelaAdmin { +proximaTela() Tela* }
+    class TelaVotacao { +proximaTela() Tela* }
+
+    class Participante {
+        <<Abstract>>
+        -string nome
+        -string id
+        +imprimirDetalhes()* void
+    }
+
+    class Votante {
+        -bool jaVotou
+        +podeVotar() bool
+        +registrarVoto() void
+    }
+    
+    class Opcao {
+        -int idNumerico
+        -int totalVotos
+        +adicionarVoto()
+    }
+
+    ' Relacionamentos
+    GerenciadorVotacoes "1" o-- "1" Votacao : contém
+    GerenciadorVotacoes "1" o-- "1" Relatorio : usa
+    GerenciadorVotacoes "1" *-- "N" Opcao : possui (owner)
+    GerenciadorVotacoes "1" *-- "N" Votante : possui (owner)
+    
+    GerenciadorVotacoes ..> GerenciadorDados : usa
+
+    Votacao "1" *-- "0..1" Urna : contém (unique_ptr)
+    Votacao ..> Opcao : agrega (ponteiro)
+    Votacao ..> Votante : agrega (ponteiro)
+    
+    Urna ..> Votante : usa
+    Urna ..> Opcao : usa (ponteiro)
+    
+    Tela <|-- TelaPrincipal
+    Tela <|-- TelaAdmin
+    Tela <|-- TelaVotacao
+    
+    main ..> Tela : usa
+    Tela ..> GerenciadorVotacoes : referencia
+
+    Participante <|-- Votante
+            </pre>
+        </section>
+
+        <!-- SEÇÃO 7: DIVISÃO DE TAREFAS (Do relatório) -->
+        <section class="section">
+            <h2>Divisão de Tarefas</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Integrante</th>
+                        <th>Contribuições</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Henrique Lima (hsl3)</strong></td>
+                        <td>Definição da arquitetura geral, refatoração completa do sistema original, implementação do CORE e integração entre as camadas. Responsável também pela documentação técnica.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Igor Rafael (irob)</strong></td>
+                        <td>Apoio na organização da estrutura de pastas e revisão geral da interface, contribuindo na padronização visual e navegação.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Mateus Barbosa (mbos)</strong></td>
+                        <td>Criação e estilização das telas principais da aplicação (UI), com foco na interface de votação e exibição de resultados.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Mateus Martins (mmb2)</strong></td>
+                        <td>Implementação de partes da camada DATA, aplicação de conceitos de polimorfismo e suporte na modelagem das classes.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Robson Landim (rlcj)</strong></td>
+                        <td>Desenvolvimento inicial do código-base e posterior atuação em testes, depuração e verificação das funcionalidades do modo Admin.</td>
+                    </tr>
+                </tbody>
+            </table>
         </section>
 
         <footer>
             <p>Desenvolvido por: Henrique Lima (hsl3), Igor Barbosa (irob), Mateus Santos (mbos), Mateus Burgos (mmb2), Robson Junior (rlcj).</p>
         </footer>
     </div>
+
+    <!-- Script para renderizar os diagramas Mermaid -->
+    <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({startOnLoad:true});</script>
 </body>
 </html>
